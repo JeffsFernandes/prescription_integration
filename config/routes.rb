@@ -1,4 +1,8 @@
 PrescriptionIntegration::Application.routes.draw do
+  resources :principio_ativos
+
+  resources :medicamentos
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
