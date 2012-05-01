@@ -1,0 +1,25 @@
+<%= form_for(@farmacium) do |f| %>
+  <% if @farmacium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@farmacium.errors.count, "error") %> prohibited this farmacium from being saved:</h2>
+
+      <ul>
+      <% @farmacium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :id_cep %><br />
+    <%= f.number_field :id_cep %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
