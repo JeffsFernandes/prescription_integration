@@ -15,6 +15,11 @@
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>
   </div>
+
+  <%= f.fields_for :endereco do |builder| %>
+    <%= render "form_endereco", :f => builder %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

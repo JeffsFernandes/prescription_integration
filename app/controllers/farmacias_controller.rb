@@ -25,6 +25,7 @@ class FarmaciasController < ApplicationController
   # GET /farmacias/new.json
   def new
     @farmacia = Farmacia.new
+    endereco = @farmacia.enderecos
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,3 +1,4 @@
 class Farmacia < ActiveRecord::Base
-	has_one :endereco
+	has_one :enderecos
+	accepts_nested_attributes_for :enderecos
 end
