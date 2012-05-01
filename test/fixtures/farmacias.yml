@@ -2,8 +2,8 @@
 
 one:
   nome: MyString
-  id_cep: 1
+  endereco_id: 1
 
 two:
   nome: MyString
-  id_cep: 1
+  endereco_id: 1

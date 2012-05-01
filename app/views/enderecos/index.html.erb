@@ -1,0 +1,35 @@
+<h1>Listar Endereços</h1>
+
+<table>
+  <tr>
+    <th>Rua</th>
+    <th>Número</th>
+    <th>Complemento</th>
+    <th>Bairro</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Cep</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @enderecos.each do |endereco| %>
+  <tr>
+    <td><%= endereco.rua %></td>
+    <td><%= endereco.numero %></td>
+    <td><%= endereco.complemento %></td>
+    <td><%= endereco.bairro %></td>
+    <td><%= endereco.cidade %></td>
+    <td><%= endereco.estado %></td>
+    <td><%= endereco.cep %></td>
+    <td><%= link_to 'Ver', endereco %></td>
+    <td><%= link_to 'Editar', edit_endereco_path(endereco) %></td>
+    <td><%= link_to 'Remover', endereco, confirm: 'Confirmar?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Endereço', new_endereco_path %>

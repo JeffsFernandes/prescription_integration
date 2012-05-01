@@ -1,8 +1,9 @@
 PrescriptionIntegration::Application.routes.draw do
-  resources :farmacia
 
   root      :to => 'welcome#index'
   resources :principio_ativos
   resources :medicamentos
-
+  resources :farmacias do
+  	resources :enderecos
+  end
 end

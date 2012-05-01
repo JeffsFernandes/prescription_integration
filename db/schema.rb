@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430220148) do
+ActiveRecord::Schema.define(:version => 20120501142335) do
 
-  create_table "farmacia", :force => true do |t|
+  create_table "farmacias", :force => true do |t|
     t.string   "nome"
-    t.integer  "id_cep"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "endereco_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "medicamentos", :force => true do |t|

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @farmacia.nome %>
+</p>
+
+
+<%= link_to 'Editar', edit_farmacia_path(@farmacia) %> |
+<%= link_to 'Voltar', farmacias_path %>
