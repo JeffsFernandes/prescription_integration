@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rua:</b>
+  <%= @endereco.rua %>
+</p>
+
+<p>
+  <b>Número:</b>
+  <%= @endereco.numero %>
+</p>
+
+<p>
+  <b>Complemento:</b>
+  <%= @endereco.complemento %>
+</p>
+
+<p>
+  <b>Bairro:</b>
+  <%= @endereco.bairro %>
+</p>
+
+<p>
+  <b>Cidade:</b>
+  <%= @endereco.cidade %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @endereco.estado %>
+</p>
+
+<p>
+  <b>Cep:</b>
+  <%= @endereco.cep %>
+</p>
+
+
+<%= link_to 'Editar', edit_endereco_path(@endereco) %> |
+<%= link_to 'Voltar', enderecos_path %>

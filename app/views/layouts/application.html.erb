@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PrescriptionIntegration</title>
+  <title>Integração de Prescrições Médicas</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<ul id="nav">
+	<li><a href="/">Home</a></li>
+	<li><a href="/medicamentos">Medicamentos</a></li>
+	<li><a href="/principio_ativos">Princípios Ativos</a></li>
+	<li><a href="/farmacias">Farmácias</a></li>
+</ul>
 
 <%= yield %>
 

@@ -1,0 +1,26 @@
+<%= form_for(@farmacia) do |f| %>
+  <% if @farmacia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@farmacia.errors.count, "error") %> prohibited this farmacia from being saved:</h2>
+
+      <ul>
+      <% @farmacia.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+
+  <%= f.fields_for :endereco do |builder| %>
+    <%= render "form_endereco", :f => builder %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
