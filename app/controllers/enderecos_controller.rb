@@ -25,7 +25,6 @@ class EnderecosController < ApplicationController
   # GET /enderecos/new.json
   def new
     @endereco = Endereco.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @endereco }

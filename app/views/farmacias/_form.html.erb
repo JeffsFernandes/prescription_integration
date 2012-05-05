@@ -16,8 +16,35 @@
     <%= f.text_field :nome %>
   </div>
 
-  <%= f.fields_for :endereco do |builder| %>
-    <%= render "form_endereco", :f => builder %>
+  <%= f.fields_for :endereco do |endereco_fields| %>
+    <div class="field">
+    <%= endereco_fields.label :rua %><br />
+    <%= endereco_fields.text_field :rua %>
+  </div>
+  <div class="field">
+    <%= endereco_fields.label :numero %><br />
+    <%= endereco_fields.text_field :numero %>
+  </div>
+  <div class="field">
+    <%= endereco_fields.label :complemento %><br />
+    <%= endereco_fields.text_field :complemento %>
+  </div>
+  <div class="field">
+    <%= endereco_fields.label :bairro %><br />
+    <%= endereco_fields.text_field :bairro %>
+  </div>
+  <div class="field">
+    <%= endereco_fields.label :cidade %><br />
+    <%= endereco_fields.text_field :cidade %>
+  </div>
+  <div class="field">
+    <%= endereco_fields.label :estado %><br />
+    <%= endereco_fields.text_field :estado %>
+  </div>
+  <div class="field">
+    <%= endereco_fields.label :cep %><br />
+    <%= endereco_fields.text_field :cep %>
+  </div>
   <% end %>
 
   <div class="actions">
