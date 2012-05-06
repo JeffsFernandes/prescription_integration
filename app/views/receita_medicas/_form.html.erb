@@ -19,6 +19,7 @@
   </div>
   <div class="field">
     <p>Status</p>
+    <%= f.select(:historico_id, @historicos.collect{|t|[t.nome,t.id]}) %>
   </div>
 
   <div class="field">

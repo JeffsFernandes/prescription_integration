@@ -28,6 +28,7 @@ class ReceitaMedicasController < ApplicationController
     @farmacias = Farmacia.all
     @principios_ativos = PrincipioAtivo.all
     @medicamentos = Medicamento.all
+    @historicos = Historico.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @receita_medica }
