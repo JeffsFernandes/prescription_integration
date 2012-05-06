@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501152038) do
+ActiveRecord::Schema.define(:version => 20120506161332) do
 
   create_table "enderecos", :force => true do |t|
     t.integer  "farmacia_id"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(:version => 20120501152038) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "historicos", :force => true do |t|
+    t.string   "nome"
+    t.text     "descricao"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "medicamento_receita", :force => true do |t|
+    t.integer  "medicamento_id"
+    t.integer  "receita_medica_id"
+    t.float    "quantidade"
+    t.string   "posologia"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "medicamentos", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at", :null => false
@@ -43,6 +59,24 @@ ActiveRecord::Schema.define(:version => 20120501152038) do
     t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "principio_receita", :force => true do |t|
+    t.integer  "principio_ativo_id"
+    t.integer  "receita_medica_id"
+    t.integer  "quantidade"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "receita_medicas", :force => true do |t|
+    t.integer  "medico_id"
+    t.integer  "paciente_id"
+    t.integer  "historico_id"
+    t.integer  "farmacia_id"
+    t.date     "data_prescricao"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

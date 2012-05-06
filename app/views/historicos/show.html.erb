@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @historico.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @historico.descricao %>
+</p>
+
+
+<%= link_to 'Edit', edit_historico_path(@historico) %> |
+<%= link_to 'Back', historicos_path %>

@@ -1,0 +1,61 @@
+<%= form_for(@receita_medica) do |f| %>
+  <% if @receita_medica.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@receita_medica.errors.count, "error") %> prohibited this receita_medica from being saved:</h2>
+
+      <ul>
+      <% @receita_medica.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p>Médico</p>
+  </div>
+  <div class="field">
+    <p>Paciente</p>
+  </div>
+  <div class="field">
+    <p>Status</p>
+    <%= f.select(:historico_id, @historicos.collect{|t|[t.nome,t.id]}) %>
+  </div>
+
+  <div class="field">
+    <% if @medicamentos %>
+      <p>Medicamentos</p>
+      <ul>
+        <% @medicamentos.each do |m| %>
+            <li><%= check_box_tag "receita_medica[medicamento_ids][]", m.id %> <%= m.nome %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>Ainda não existem Medicamentos cadastrados</h3>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <% if @principios_ativos %>
+      <p>Princípios Ativos</p>
+      <ul>
+        <% @principios_ativos.each do |p| %>
+            <li><%= check_box_tag "receita_medica[principio_ativo_ids][]", p.id %> <%= p.nome %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>Ainda não existem Princípios Ativos cadastrados</h3>
+    <% end %>
+  </div>
+  <div class="field">
+    <p>Farmácia</p>
+    <%= f.select(:farmacia_id, @farmacias.collect{|t|[t.nome,t.id]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :data_prescricao %><br />
+    <%= f.date_select :data_prescricao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

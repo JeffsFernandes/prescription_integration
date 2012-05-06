@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  medico_id: 1
+  paciente_id: 1
+  historico_id: 1
+  farmacia_id: 1
+  data_prescricao: 2012-05-06
+
+two:
+  medico_id: 1
+  paciente_id: 1
+  historico_id: 1
+  farmacia_id: 1
+  data_prescricao: 2012-05-06
