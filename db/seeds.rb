@@ -33,3 +33,7 @@ end
 unless Historico.find_by_nome('Excluido')
 	Historico.create({nome: 'Excluido'})
 end
+
+["Paciente", "Medico", "Farmacia"].each do |user_type|
+  UserType.find_or_create_by_name(user_type)
+end
