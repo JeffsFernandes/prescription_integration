@@ -1,6 +1,7 @@
 class CreateEnderecos < ActiveRecord::Migration
   def change
     create_table :enderecos do |t|
+      t.integer :farmacia_id
       t.string :rua
       t.integer :numero
       t.string :complemento
