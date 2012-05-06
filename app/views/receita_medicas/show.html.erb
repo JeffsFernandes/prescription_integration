@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medico:</b>
+  <%= @receita_medica.medico_id %>
+</p>
+
+<p>
+  <b>Paciente:</b>
+  <%= @receita_medica.paciente_id %>
+</p>
+
+<p>
+  <b>Historico:</b>
+  <%= @receita_medica.historico_id %>
+</p>
+
+<p>
+  <b>Farmacia:</b>
+  <%= @receita_medica.farmacia_id %>
+</p>
+
+<p>
+  <b>Data prescricao:</b>
+  <%= @receita_medica.data_prescricao %>
+</p>
+
+
+<%= link_to 'Edit', edit_receita_medica_path(@receita_medica) %> |
+<%= link_to 'Back', receita_medicas_path %>

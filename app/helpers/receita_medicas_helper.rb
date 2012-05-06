@@ -1,0 +1,2 @@
+module ReceitaMedicasHelper
+end
