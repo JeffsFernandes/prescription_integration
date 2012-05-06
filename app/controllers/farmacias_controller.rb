@@ -25,7 +25,6 @@ class FarmaciasController < ApplicationController
   # GET /farmacias/new.json
   def new
     @farmacia = Farmacia.new
-    @endereco = Endereco.new
     @farmacia.build_endereco
 
     respond_to do |format|
@@ -43,7 +42,6 @@ class FarmaciasController < ApplicationController
   # POST /farmacias.json
   def create
     @farmacia = Farmacia.new(params[:farmacia])
-    #@endereco = @farmacia.endereco.build(params[:endereco]) 
     respond_to do |format|
       if @farmacia.save
         format.html { redirect_to @farmacia, notice: 'Farmacia was successfully created.' }
