@@ -25,7 +25,9 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/new.json
   def new
     @receita_medica = ReceitaMedica.new
-
+    @farmacias = Farmacia.all
+    @principios_ativos = PrincipioAtivo.all
+    @medicamentos = Medicamento.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @receita_medica }

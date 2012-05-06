@@ -20,8 +20,35 @@
   <div class="field">
     <p>Status</p>
   </div>
+
+  <div class="field">
+    <% if @medicamentos %>
+      <p>Medicamentos</p>
+      <ul>
+        <% @medicamentos.each do |m| %>
+            <li><%= check_box_tag "receita_medica[medicamento_ids][]", m.id %> <%= m.nome %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>Ainda não existem Medicamentos cadastrados</h3>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <% if @principios_ativos %>
+      <p>Princípios Ativos</p>
+      <ul>
+        <% @principios_ativos.each do |p| %>
+            <li><%= check_box_tag "receita_medica[principio_ativo_ids][]", p.id %> <%= p.nome %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>Ainda não existem Princípios Ativos cadastrados</h3>
+    <% end %>
+  </div>
   <div class="field">
     <p>Farmácia</p>
+    <%= f.select(:farmacia_id, @farmacias.collect{|t|[t.nome,t.id]}) %>
   </div>
   <div class="field">
     <%= f.label :data_prescricao %><br />
