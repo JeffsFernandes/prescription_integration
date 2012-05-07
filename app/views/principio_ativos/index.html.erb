@@ -1,23 +1,24 @@
-<h1>Listar Princípios Ativos</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @principio_ativos.each do |principio_ativo| %>
-  <tr>
-    <td><%= principio_ativo.nome %></td>
-    <td><%= link_to 'Ver', principio_ativo %></td>
-    <td><%= link_to 'Editar', edit_principio_ativo_path(principio_ativo) %></td>
-    <td><%= link_to 'Remover', principio_ativo, confirm: 'Confirmar?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Principio Ativos</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @principio_ativos.each do |principio_ativo| %>
+      <tr>
+        <td><%= principio_ativo.id %></td>
+        <td><%= link_to principio_ativo.nome, principio_ativo_path(principio_ativo) %></td>
+        <td>
+          <%= link_to 'Edit', edit_principio_ativo_path(principio_ativo), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', principio_ativo_path(principio_ativo), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'Novo Princípio ativo', new_principio_ativo_path %>
+<%= link_to 'New', new_principio_ativo_path, :class => 'btn btn-primary' %>
