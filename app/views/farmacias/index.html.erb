@@ -1,25 +1,24 @@
-<h1>Lisrtar Farmácias</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Endereco</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @farmacias.each do |farmacia| %>
-  <tr>
-    <td><%= farmacia.nome %></td>
-    <td><%= farmacia.endereco_id %></td>
-    <td><%= link_to 'Ver', farmacia %></td>
-    <td><%= link_to 'Editar', edit_farmacia_path(farmacia) %></td>
-    <td><%= link_to 'Remover', farmacia, confirm: 'Confirmar?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Farmacias</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @farmacias.each do |farmacia| %>
+      <tr>
+        <td><%= farmacia.id %></td>
+        <td><%= link_to farmacia.nome, farmacia_path(farmacia) %></td>
+        <td>
+          <%= link_to 'Edit', edit_farmacia_path(farmacia), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', farmacia_path(farmacia), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'Cadastrar nova Farmácia', new_farmacia_path %>
+<%= link_to 'New', new_farmacia_path, :class => 'btn btn-primary' %>

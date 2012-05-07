@@ -1,21 +1,17 @@
-<%= form_for(@medicamento) do |f| %>
-  <% if @medicamento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@medicamento.errors.count, "error") %> prohibited this medicamento from being saved:</h2>
+<%= form_for @medicamento, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> /Medicamento</legend>
 
-      <ul>
-      <% @medicamento.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="control-group">
+      <%= f.label :nome, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :nome, :class => 'text_field' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', medicamentos_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

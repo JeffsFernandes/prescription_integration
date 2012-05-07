@@ -1,23 +1,24 @@
-<h1>Listar Medicamentos</h1>
-
-<table>
-  <tr>
-    <th>Nome</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @medicamentos.each do |medicamento| %>
-  <tr>
-    <td><%= medicamento.nome %></td>
-    <td><%= link_to 'Ver', medicamento %></td>
-    <td><%= link_to 'Editar', edit_medicamento_path(medicamento) %></td>
-    <td><%= link_to 'Remover', medicamento, confirm: 'Confirmar?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Medicamentos</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @medicamentos.each do |medicamento| %>
+      <tr>
+        <td><%= medicamento.id %></td>
+        <td><%= link_to medicamento.nome, medicamento_path(medicamento) %></td>
+        <td>
+          <%= link_to 'Edit', edit_medicamento_path(medicamento), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', medicamento_path(medicamento), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'Novo Medicamento', new_medicamento_path %>
+<%= link_to 'New', new_medicamento_path, :class => 'btn btn-primary' %>

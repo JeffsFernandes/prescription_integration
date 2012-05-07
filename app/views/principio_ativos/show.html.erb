@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h1>/Principio Ativo</h1>
 
 <p>
-  <b>Nome:</b>
+  <b>Nome</b><br>
   <%= @principio_ativo.nome %>
 </p>
 
-
-<%= link_to 'Editar', edit_principio_ativo_path(@principio_ativo) %> |
-<%= link_to 'Voltar', principio_ativos_path %>
+<div class="form-actions">
+  <%= link_to 'Back', principio_ativos_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_principio_ativo_path(@principio_ativo), :class => 'btn' %>
+  <%= link_to 'Delete', principio_ativo_path(@principio_ativo), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

@@ -1,53 +1,55 @@
-<%= form_for(@farmacia) do |f| %>
-  <% if @farmacia.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@farmacia.errors.count, "error") %> prohibited this farmacia from being saved:</h2>
+<%= form_for @farmacia, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> /Farmacia</legend>
 
-      <ul>
-      <% @farmacia.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="control-group">
+      <%= f.label :nome, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :nome, :class => 'text_field' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
-
-  <%= f.fields_for :endereco do |endereco_fields| %>
-    <div class="field">
-    <%= endereco_fields.label :rua %><br />
-    <%= endereco_fields.text_field :rua %>
-  </div>
-  <div class="field">
+    <div class="control-group">
+      <%= f.label :endereco_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :endereco_id, :class => 'number_field' %>
+      </div>
+    </div>
+	
+	<%= f.fields_for :endereco do |endereco_fields| %>
+    	<div class="control-group">
+    		<%= endereco_fields.label :rua %><br />
+    		<%= endereco_fields.text_field :rua %>
+  		</div>
+  	<div class="control-group">
     <%= endereco_fields.label :numero %><br />
     <%= endereco_fields.text_field :numero %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= endereco_fields.label :complemento %><br />
     <%= endereco_fields.text_field :complemento %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= endereco_fields.label :bairro %><br />
     <%= endereco_fields.text_field :bairro %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= endereco_fields.label :cidade %><br />
     <%= endereco_fields.text_field :cidade %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= endereco_fields.label :estado %><br />
     <%= endereco_fields.text_field :estado %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= endereco_fields.label :cep %><br />
     <%= endereco_fields.text_field :cep %>
   </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', farmacias_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>
