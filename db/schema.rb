@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120506221915) do
+ActiveRecord::Schema.define(:version => 20120514225654) do
 
   create_table "enderecos", :force => true do |t|
     t.integer  "farmacia_id"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20120506221915) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "item_receita", :force => true do |t|
+    t.integer  "receita_medica_id"
+    t.integer  "medicamento_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "medicamento_receita", :force => true do |t|
     t.integer  "medicamento_id"
     t.integer  "receita_medica_id"
@@ -51,22 +58,9 @@ ActiveRecord::Schema.define(:version => 20120506221915) do
 
   create_table "medicamentos", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "principio_ativos", :force => true do |t|
-    t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "principio_receita", :force => true do |t|
-    t.integer  "principio_ativo_id"
-    t.integer  "receita_medica_id"
-    t.integer  "quantidade"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.boolean  "principio_ativo"
   end
 
   create_table "receita_medicas", :force => true do |t|
