@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514232201) do
+ActiveRecord::Schema.define(:version => 20120514233254) do
 
   create_table "enderecos", :force => true do |t|
     t.integer  "farmacia_id"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(:version => 20120514232201) do
     t.date     "data_prescricao"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "status_id"
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "nome"
+    t.text     "descricao"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "user_types", :force => true do |t|
