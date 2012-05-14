@@ -1,4 +1,4 @@
 class ReceitaMedica < ActiveRecord::Base
-	has_many :medicamento_receitas
-	has_many :medicamentos, :through => :medicamento_receitas
+	has_many :item_receitas
+	has_many :medicamentos, :through => :item_receita
 end
