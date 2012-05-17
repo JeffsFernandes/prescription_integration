@@ -22,19 +22,20 @@
         <a class="brand" href="#">Some Store</a>
         <div class="nav-collapse">
           <ul class="nav">
-	<li><a href="/">Home</a></li>
-	<li><a href="/medicamentos">Medicamentos</a></li>
-	<li><a href="/principio_ativos">Princípios Ativos</a></li>
-	<li><a href="/farmacias">Farmácias</a></li>
-	<li><a href="/receita_medicas">Receitas</a></li>
-	<li><%= link_to 'Sair', destroy_user_session_path, :method => :delete %></li>
-</ul>
-
+          	<li><a href="/">Home</a></li>
+          	<li><a href="/medicamentos">Medicamentos</a></li>
+          	<li><a href="/principio_ativos">Princípios Ativos</a></li>
+          	<li><a href="/farmacias">Farmácias</a></li>
+          	<li><a href="/receita_medicas">Receitas</a></li>
+          	<li><%= link_to 'Sair', destroy_user_session_path, :method => :delete %></li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-
+  <% if current_user %>
+    <h2><%= current_user.email %></h2>
+  <% end %>
   <div class="container-fluid">
     <div class="row-fluid">
 	<div class="span2">
