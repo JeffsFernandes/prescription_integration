@@ -26,7 +26,6 @@ class ReceitaMedicasController < ApplicationController
   def new
     @receita_medica = ReceitaMedica.new
     @farmacias = Farmacia.all
-    @principios_ativos = PrincipioAtivo.all
     @medicamentos = Medicamento.all
     @historicos = Historico.all
     respond_to do |format|
