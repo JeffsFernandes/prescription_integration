@@ -12,7 +12,82 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <div>
+    <%= f.label :cpf %><br />
+    <%= f.text_field :cpf %>
+  </div>
+
+  <div>
+    <%= f.label :telefone %><br />
+    <%= f.text_field :telefone %>
+  </div>
+
+  <div>
+    <%= f.label :sexo %><br />
+    <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
+  </div>
+
+  <div>
+    <%= f.label :data_nascimento %><br />
+    <%= f.date_select :data_nascimento %>
+  </div>
+
+
+  <div>
+    <%= f.label :tipo %><br />
+    <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo'} %>
+  </div>
+  
+
+  <div class = "tipo_paciente">
+
+  </div>
+  <div class = "tipo_medico">
+    <div>
+      <%= f.label :crm %><br />
+      <%= f.text_field :crm %>
+    </div>
+  </div>
+
+  <div class = "tipo_farmacia">
+    <div>
+      <%= f.label :cnpj %><br />
+      <%= f.text_field :cnpj %>
+    </div>
+  </div>
+
+  <div class = "endereco">
+     <div class="control-group">
+          <%= f.label :rua %><br />
+          <%= f.text_field :rua %>
+      </div>
+      <div class="control-group">
+        <%= f.label :numero %><br />
+        <%= f.text_field :numero %>
+      </div>
+      <div class="control-group">
+        <%= f.label :complemento %><br />
+        <%= f.text_field :complemento %>
+      </div>
+      <div class="control-group">
+        <%= f.label :bairro %><br />
+        <%= f.text_field :bairro %>
+      </div>
+      <div class="control-group">
+        <%= f.label :cidade %><br />
+        <%= f.text_field :cidade %>
+      </div>
+      <div class="control-group">
+        <%= f.label :estado %><br />
+        <%= f.text_field :estado %>
+      </div>
+      <div class="control-group">
+        <%= f.label :cep %><br />
+        <%= f.text_field :cep %>
+      </div>
+  </div>
   <div><%= f.submit "Sign up" %></div>
 <% end %>
+
 
 <%= render :partial => "devise/shared/links" %>

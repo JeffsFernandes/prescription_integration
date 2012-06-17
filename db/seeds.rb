@@ -10,8 +10,8 @@ unless Medicamento.find_by_nome('medicamento_1')
 	Medicamento.create({nome: 'medicamento_1'})
 end
 
-unless Farmacia.find_by_nome('Droga Raia')
-	Farmacia.create({nome: 'Droga Raia'})
+unless User.find_by_nome('Droga Raia')
+	User.create({nome: 'Droga Raia', email: 'droga@raia.com'})
 end
 
 unless Historico.find_by_nome('Pendente')

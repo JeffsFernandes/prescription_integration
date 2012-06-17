@@ -11,27 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527170427) do
-
-  create_table "enderecos", :force => true do |t|
-    t.integer  "farmacia_id"
-    t.string   "rua"
-    t.integer  "numero"
-    t.string   "complemento"
-    t.string   "bairro"
-    t.string   "cidade"
-    t.string   "estado"
-    t.string   "cep"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "farmacias", :force => true do |t|
-    t.string   "nome"
-    t.integer  "endereco_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120617173909) do
 
   create_table "historicos", :force => true do |t|
     t.string   "nome"
@@ -56,24 +36,6 @@ ActiveRecord::Schema.define(:version => 20120527170427) do
     t.boolean  "principio_ativo"
   end
 
-  create_table "medicos", :force => true do |t|
-    t.integer  "crm"
-    t.string   "telefone"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "pacientes", :force => true do |t|
-    t.string   "nome"
-    t.string   "telefone"
-    t.string   "cpf"
-    t.date     "data_nascimento"
-    t.string   "sexo"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
   create_table "receita_medicas", :force => true do |t|
     t.integer  "medico_id"
     t.integer  "paciente_id"
@@ -92,12 +54,6 @@ ActiveRecord::Schema.define(:version => 20120527170427) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "user_types", :force => true do |t|
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.string   "name",       :limit => 30
-  end
-
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -111,6 +67,21 @@ ActiveRecord::Schema.define(:version => 20120527170427) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
+    t.integer  "tipo",                                  :default => 1
+    t.string   "telefone"
+    t.string   "cpf"
+    t.integer  "sexo"
+    t.date     "data_nascimento"
+    t.string   "crm"
+    t.string   "cnpj"
+    t.string   "rua"
+    t.string   "numero"
+    t.string   "complemento"
+    t.string   "bairro"
+    t.string   "estado"
+    t.string   "cep"
+    t.string   "cidade"
+    t.string   "nome"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
