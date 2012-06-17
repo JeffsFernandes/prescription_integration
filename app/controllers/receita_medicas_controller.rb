@@ -27,7 +27,6 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/new.json
   def new
     @receita_medica = ReceitaMedica.new
-    @farmacias = Farmacia.all
     @medicamentos = Medicamento.all
     @historicos = Historico.all
     respond_to do |format|
