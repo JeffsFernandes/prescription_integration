@@ -1,7 +1,5 @@
 <%= form_for @receita_medica, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> /Receita Medica</legend>
-
     <div class="control-group">
       <%= f.label "Médico", :class => 'control-label' %>
       <div class="controls">
@@ -40,7 +38,7 @@
     <div class="control-group">
       <%= f.label :status_id, :class => 'control-label' %>
       <div class="controls">
-        <%= f.number_field :status_id, :class => 'number_field' %>
+				<%= select(:receita_medica, :status_id, Status.all.map{|u| [u.nome, u.id]})%>
       </div>
     </div>
 

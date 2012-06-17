@@ -45,7 +45,7 @@ class ReceitaMedicasController < ApplicationController
   # POST /receita_medicas.json
   def create
     @receita_medica = ReceitaMedica.new(params[:receita_medica])
-
+    
     respond_to do |format|
       if @receita_medica.save
         format.html { redirect_to @receita_medica, notice: 'Receita medica was successfully created.' }
