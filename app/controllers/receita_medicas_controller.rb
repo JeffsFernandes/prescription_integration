@@ -16,11 +16,13 @@ class ReceitaMedicasController < ApplicationController
     @receita_medica = ReceitaMedica.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @receita_medica }
+      format.html # show.html.erb                                                
+      format.json { render json: {
+        :receita => @receita_medica, 
+        :medicamentos => @receita_medica.item_receitas.collect {|t| [t.medicamento.nome, t.posologia, t.quantidade]} } }
     end
-  end
-
+  end                                                                     
+  
   # GET /receita_medicas/new
   # GET /receita_medicas/new.json
   def new
