@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(:version => 20120527170427) do
   create_table "item_receita", :force => true do |t|
     t.integer  "receita_medica_id"
     t.integer  "medicamento_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
     t.integer  "posologia"
     t.integer  "quantidade"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "medicamentos", :force => true do |t|
