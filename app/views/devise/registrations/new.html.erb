@@ -12,16 +12,10 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div>Tipo de Usuario: <br/> 
-
-  <ul>
-   <% UserType.all.each do |user_type| %>
-      <li><%= check_box_tag :user_type_ids, user_type.id, @user.user_types.include?(user_type), :nome => 'user[user_type_ids][]' %>
-      <%= label_tag :user_type_ids, user_type.name %></li>
-   <% end %>
-  </ul>
+  <div>Tipoe de Usuario: <br/> 
+		<%= select(:user, :user_type_id, UserType.all.map{|u| [u.name, u.id]})%></div>
 		
-  <div><%= f.submit "Cadastrar" %></div>
+  <div><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

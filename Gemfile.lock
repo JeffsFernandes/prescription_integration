@@ -31,7 +31,6 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
-    cancan (1.6.7)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -121,13 +120,11 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.0)
       rack (>= 1.0)
-    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  cancan
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
@@ -136,4 +133,3 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
-  will_paginate
