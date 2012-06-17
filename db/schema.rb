@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527170427) do
+ActiveRecord::Schema.define(:version => 20120617173727) do
 
   create_table "enderecos", :force => true do |t|
     t.integer  "farmacia_id"
@@ -111,6 +111,13 @@ ActiveRecord::Schema.define(:version => 20120527170427) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
+    t.string   "nome"
+    t.string   "telefone"
+    t.string   "cpf"
+    t.date     "data_nascimento"
+    t.string   "sexo"
+    t.integer  "tipo"
+    t.integer  "crm"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

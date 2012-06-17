@@ -1,6 +1,7 @@
 class ReceitaMedica < ActiveRecord::Base
 	has_many :item_receitas
 	has_many :medicamentos, :through => :item_receita
-	belongs_to :paciente
-	belongs_to :medico
+	
+	belongs_to :paciente, :class_name => 'User', :foreign_key => 'paciente_id', :conditions => "tipo = 1"
+	belongs_to :medico, :class_name => 'User', :foreign_key => 'medico_id', :conditions => "tipo = 2"
 end

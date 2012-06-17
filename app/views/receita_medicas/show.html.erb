@@ -1,13 +1,13 @@
-<h1>/Receita Medica</h1>
+<h1>Receita Médica</h1>
 
 <p>
   <b>Medico</b><br>
-  <%= @receita_medica.medico_id %>
+  <%= @receita_medica.medico.crm %>
 </p>
 
 <p>
   <b>Paciente</b><br>
-  <%= @receita_medica.paciente_id %>
+  <%= @receita_medica.paciente.cpf %>
 </p>
 
 <p>
@@ -17,17 +17,17 @@
 
 <p>
   <b>Farmacia</b><br>
-  <%= @receita_medica.farmacia_id %>
+  <%= @receita_medica.farmacia.nome %>
 </p>
 
 <p>
   <b>Data prescricao</b><br>
-  <%= @receita_medica.data_prescricao %>
+  <%= @receita_medica.created_at %>
 </p>
 
 <p>
   <b>Status</b><br>
-  <%= @receita_medica.status_id %>
+  <%= @receita_medica.status.nome %>
 </p>
 
 <div class="form-actions">

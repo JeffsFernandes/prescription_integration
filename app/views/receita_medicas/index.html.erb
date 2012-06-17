@@ -13,9 +13,9 @@
     <% @receita_medicas.each do |receita_medica| %>
       <tr>
         <td><%= link_to receita_medica.id, receita_medica %></td>
-        <td><%= link_to receita_medica.medico.crm , "receita_medica.medico" %></td>
+        <td><%= receita_medica.medico.crm %></td>
         <td><%= receita_medica.created_at %></td>
-				<td><%= link_to receita_medica.paciente.cpf, "receita_medica.paciente" %>
+				<td><%= receita_medica.paciente.cpf %>
         <td>
           <%= link_to 'Editar', edit_receita_medica_path(receita_medica), :class => 'btn btn-mini' %>
         </td>
@@ -24,6 +24,6 @@
   </tbody>
 </table>
 
-<% if current_user.type == "medico" %>
+<% if current_user.tipo == 2 %>
 	<%= link_to 'Nova', new_receita_medica_path, :class => 'btn btn-primary' %>
 <% end %>

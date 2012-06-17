@@ -1,3 +1,2 @@
-class Endereco < ActiveRecord::Base
-	belongs_to :farmacia
+class Endereco_OLD < ActiveRecord::Base
 end
