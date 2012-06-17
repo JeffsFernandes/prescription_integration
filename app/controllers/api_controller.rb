@@ -28,7 +28,9 @@ class ApiController < ActionController::Base
 
   def format_json(receita)      
     r = receita
-    [r.id, r.medico.nome, r.status.nome, r.created_at, r.item_receitas.collect {|t| ["#{t.medicamento.nome} - #{t.posologia} - #{t.quantidade.to_s}" ]} ]
+    [r.id, r.medico.nome, 
+      r.status.nome, r.created_at, 
+      r.item_receitas.collect {|t| ["#{t.medicamento.nome} - #{t.posologia} - #{t.quantidade}" ]} ]
   end
 end
 
