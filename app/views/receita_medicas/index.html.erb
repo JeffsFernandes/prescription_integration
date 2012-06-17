@@ -1,31 +1,26 @@
-<h1>Listing receita_medicas</h1>
-
-<table>
-  <tr>
-    <th>Medico</th>
-    <th>Paciente</th>
-    <th>Historico</th>
-    <th>Farmacia</th>
-    <th>Data prescricao</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @receita_medicas.each do |receita_medica| %>
-  <tr>
-    <td><%= receita_medica.medico_id %></td>
-    <td><%= receita_medica.paciente_id %></td>
-    <td><%= receita_medica.historico_id %></td>
-    <td><%= receita_medica.farmacia_id %></td>
-    <td><%= receita_medica.data_prescricao %></td>
-    <td><%= link_to 'Show', receita_medica %></td>
-    <td><%= link_to 'Edit', edit_receita_medica_path(receita_medica) %></td>
-    <td><%= link_to 'Destroy', receita_medica, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Receita Medicas</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Medico</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @receita_medicas.each do |receita_medica| %>
+      <tr>
+        <td><%= receita_medica.id %></td>
+        <td><%= link_to receita_medica.medico_id, receita_medica_path(receita_medica) %></td>
+        <td><%= receita_medica.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_receita_medica_path(receita_medica), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', receita_medica_path(receita_medica), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Receita medica', new_receita_medica_path %>
+<%= link_to 'New', new_receita_medica_path, :class => 'btn btn-primary' %>

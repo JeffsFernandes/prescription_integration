@@ -1,30 +1,37 @@
-<p id="notice"><%= notice %></p>
+<h1>/Receita Medica</h1>
 
 <p>
-  <b>Medico:</b>
+  <b>Medico</b><br>
   <%= @receita_medica.medico_id %>
 </p>
 
 <p>
-  <b>Paciente:</b>
+  <b>Paciente</b><br>
   <%= @receita_medica.paciente_id %>
 </p>
 
 <p>
-  <b>Historico:</b>
+  <b>Historico</b><br>
   <%= @receita_medica.historico_id %>
 </p>
 
 <p>
-  <b>Farmacia:</b>
+  <b>Farmacia</b><br>
   <%= @receita_medica.farmacia_id %>
 </p>
 
 <p>
-  <b>Data prescricao:</b>
+  <b>Data prescricao</b><br>
   <%= @receita_medica.data_prescricao %>
 </p>
 
+<p>
+  <b>Status</b><br>
+  <%= @receita_medica.status_id %>
+</p>
 
-<%= link_to 'Edit', edit_receita_medica_path(@receita_medica) %> |
-<%= link_to 'Back', receita_medicas_path %>
+<div class="form-actions">
+  <%= link_to 'Back', receita_medicas_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_receita_medica_path(@receita_medica), :class => 'btn' %>
+  <%= link_to 'Delete', receita_medica_path(@receita_medica), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
