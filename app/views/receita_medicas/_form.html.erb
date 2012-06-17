@@ -3,16 +3,16 @@
     <legend><%= controller.action_name.capitalize %> /Receita Medica</legend>
 
     <div class="control-group">
-      <%= f.label :medico_id, :class => 'control-label' %>
+      <%= f.label "Médico", :class => 'control-label' %>
       <div class="controls">
-        <%= f.number_field :medico_id, :class => 'number_field' %>
+        <%= select(:receita_medica, :medico_id, Medico.all.map{|u| [u.crm, u.id]})%>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label :paciente_id, :class => 'control-label' %>
       <div class="controls">
-        <%= f.number_field :paciente_id, :class => 'number_field' %>
+				<%= select(:receita_medica, :paciente_id, Paciente.all.map{|u| [u.cpf, u.id]})%>
       </div>
     </div>
 
