@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120617173909) do
+=======
+ActiveRecord::Schema.define(:version => 20120617173727) do
+
+  create_table "enderecos", :force => true do |t|
+    t.integer  "farmacia_id"
+    t.string   "rua"
+    t.integer  "numero"
+    t.string   "complemento"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "estado"
+    t.string   "cep"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "farmacias", :force => true do |t|
+    t.string   "nome"
+    t.integer  "endereco_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+>>>>>>> 1105648d364f3fc6a378aeffad3b770fa5699448
 
   create_table "historicos", :force => true do |t|
     t.string   "nome"
@@ -23,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20120617173909) do
   create_table "item_receita", :force => true do |t|
     t.integer  "receita_medica_id"
     t.integer  "medicamento_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
     t.integer  "posologia"
     t.integer  "quantidade"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "medicamentos", :force => true do |t|
@@ -67,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120617173909) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
+<<<<<<< HEAD
     t.integer  "tipo",                                  :default => 1
     t.string   "telefone"
     t.string   "cpf"
@@ -82,6 +107,15 @@ ActiveRecord::Schema.define(:version => 20120617173909) do
     t.string   "cep"
     t.string   "cidade"
     t.string   "nome"
+=======
+    t.string   "nome"
+    t.string   "telefone"
+    t.string   "cpf"
+    t.date     "data_nascimento"
+    t.string   "sexo"
+    t.integer  "tipo"
+    t.integer  "crm"
+>>>>>>> 1105648d364f3fc6a378aeffad3b770fa5699448
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

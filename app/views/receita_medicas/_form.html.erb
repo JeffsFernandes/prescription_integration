@@ -3,14 +3,14 @@
     <div class="control-group">
       <%= f.label "Médico", :class => 'control-label' %>
       <div class="controls">
-        <%= select(:receita_medica, :medico_id, Medico.all.map{|u| [u.crm, u.id]})%>
+        <%= select(:receita_medica, :medico_id, User.Medicos.all.map{|u| [u.crm, u.id]})%>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label :paciente_id, :class => 'control-label' %>
       <div class="controls">
-				<%= select(:receita_medica, :paciente_id, Paciente.all.map{|u| [u.cpf, u.id]})%>
+				<%= select(:receita_medica, :paciente_id, User.Pacientes.all.map{|u| [u.cpf, u.id]})%>
       </div>
     </div>
 

@@ -21,6 +21,17 @@ class User < ActiveRecord::Base
   def set_attributes_names
     self.tipo_print = User::TIPO.key(self.tipo)
     self.sexo_print = User::SEXO.key(self.sexo)
+
+  def self.Pacientes
+    User.where(:tipo => 1)
+  end
+  
+  def self.Medicos
+    User.where(:tipo => 2)
+  end
+  
+  def self.Farmacia
+    User.where(:tipo => 3)
   end
 
 end
