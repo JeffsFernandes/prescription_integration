@@ -11,3 +11,5 @@
  *= require_self
  *= require_tree .
 */
+.show		{ visibility: visible;}
+.hidden 	{ visibility: hidden;}
