@@ -1,7 +1,7 @@
 class AddTipoToUser < ActiveRecord::Migration
   def up
     change_table :users do |t|
-      t.integer :tipo
+      t.integer :tipo, :default => 1
     end
   end
   

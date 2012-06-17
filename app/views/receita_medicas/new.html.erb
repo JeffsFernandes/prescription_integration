@@ -22,6 +22,13 @@
       </div>
     </div>
 
+    <div class="control-group">
+      <%= f.label :medicamento_id, :class => 'control-label' %>
+      <div class="controls medicamento-select">
+        <%= select(:medicamento, :nome, Medicamento.all.collect {|medicamento| [medicamento.nome, medicamento.id]}) %>
+      </div>
+    </div>
+
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', receita_medicas_path, :class => 'btn' %>
