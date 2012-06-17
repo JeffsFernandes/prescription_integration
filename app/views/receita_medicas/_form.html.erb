@@ -1,35 +1,50 @@
-<%= form_for(@receita_medica) do |f| %>
-  <% if @receita_medica.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@receita_medica.errors.count, "error") %> prohibited this receita_medica from being saved:</h2>
-      <ul>
-      <% @receita_medica.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @receita_medica, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label "Médico", :class => 'control-label' %>
+      <div class="controls">
+        <%= select(:receita_medica, :medico_id, Medico.all.map{|u| [u.crm, u.id]})%>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <p>Médico</p>
-		<%= select(:receita_medica, :medico_id, Medico.all.map{|u| [u.crm, u.id]})%>
-  </div>
-  <div class="field">
-    <p>Paciente</p>
-		<%= select(:receita_medica, :paciente_id, Paciente.all.map{|u| [u.nome, u.id]})%>
-  </div>
-  <div class="field">
-    <% if @medicamentos %>
-      <p>Medicamentos</p>
-      <ul>
-        <% @medicamentos.each do |m| %>
-            <li><%= check_box_tag "receita_medica[medicamento_ids][]", m.id %> <%= m.nome %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <h3>Ainda não existem Medicamentos cadastrados</h3>
-    <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="control-group">
+      <%= f.label :paciente_id, :class => 'control-label' %>
+      <div class="controls">
+				<%= select(:receita_medica, :paciente_id, Paciente.all.map{|u| [u.cpf, u.id]})%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :historico_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :historico_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :farmacia_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :farmacia_id, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :data_prescricao, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.date_select :data_prescricao, :class => 'date_select' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :status_id, :class => 'control-label' %>
+      <div class="controls">
+				<%= select(:receita_medica, :status_id, Status.all.map{|u| [u.nome, u.id]})%>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', receita_medicas_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

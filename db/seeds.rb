@@ -10,10 +10,6 @@ unless Medicamento.find_by_nome('medicamento_1')
 	Medicamento.create({nome: 'medicamento_1'})
 end
 
-unless PrincipioAtivo.find_by_nome('principio ativo 1')
-	PrincipioAtivo.create({nome: 'principio ativo 1'})
-end
-
 unless Farmacia.find_by_nome('Droga Raia')
 	Farmacia.create({nome: 'Droga Raia'})
 end
@@ -32,8 +28,20 @@ end
 
 unless Historico.find_by_nome('Excluido')
 	Historico.create({nome: 'Excluido'})
+end 
+
+unless Status.find_by_nome('Pendente')
+	Status.create({nome: 'Pendente'})
 end
 
-["Paciente", "Medico", "Farmacia"].each do |user_type|
-  UserType.find_or_create_by_name(user_type)
+unless Status.find_by_nome('Finalizado')
+	Status.create({nome: 'Finalizado'})
+end
+
+unless Status.find_by_nome('Uso continuo')
+	Status.create({nome: 'Uso continuo'})
+end
+
+unless Status.find_by_nome('Excluido')
+	Status.create({nome: 'Excluido'})
 end
