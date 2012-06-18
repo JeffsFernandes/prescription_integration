@@ -1,30 +1,40 @@
 <h2>Nova receita</h2>
 <%= form_for @receita_medica, :html => { :class => 'form-horizontal' } do |f| %>
-  <fieldset>
+ <fieldset>
+   <div class="control-group">
+     <%= f.label :paciente_id, :class => 'control-label' %>
+     <div class="controls">
+                               <%= f.collection_select :paciente_id, @users, :id, :cpf%>
+     </div>
+   </div>
+
+   <div class="control-group">
+     <%= f.label :status_id, :class => 'control-label' %>
+     <div class="controls">
+        <%= select(:receita_medica, :status_id, Status.all.map{|u|[u.nome, u.id]})%>
+     </div>
+   </div>
+
+   <h3>Novo medicamento</h3>
+   <%= f.fields_for :item_receitas do |builder| %>
     <div class="control-group">
-      <%= f.label :paciente_id, :class => 'control-label' %>
-      <div class="controls">
-				<%= select(:receita_medica, :paciente_id, User.Pacientes.all.map{|u| [u.cpf, u.id]})%>
+      <%= builder.label :posologia, :class => 'control-label' %>
+      <div class="controls medicamento-select">
+        <%= builder.text_field :posologia %>
       </div>
     </div>
-
     <div class="control-group">
-      <%= f.label :historico_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :historico_id, :class => 'number_field' %>
+      <%= builder.label :medicamento_id, :class => 'control-label' %>
+      <div class="controls medicamento-select">
+        <%= builder.collection_select :medicamento_id, @medicamentos, :id, :nome %>
       </div>
+      <%= builder.submit %>
     </div>
+   <% end %>
 
-    <div class="control-group">
-      <%= f.label :status_id, :class => 'control-label' %>
-      <div class="controls">
-				<%= select(:receita_medica, :status_id, Status.all.map{|u| [u.nome, u.id]})%>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', receita_medicas_path, :class => 'btn' %>
-    </div>
-  </fieldset>
+   <div class="form-actions">
+     <%= f.submit nil, :class => 'btn btn-primary' %>
+     <%= link_to 'Cancel', receita_medicas_path, :class => 'btn' %>
+   </div>
+ </fieldset>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617173909) do
+ActiveRecord::Schema.define(:version => 20120618143045) do
 
   create_table "historicos", :force => true do |t|
     t.string   "nome"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20120617173909) do
     t.integer  "medicamento_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.integer  "posologia"
     t.integer  "quantidade"
+    t.string   "posologia"
   end
 
   create_table "medicamentos", :force => true do |t|

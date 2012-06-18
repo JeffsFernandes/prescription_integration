@@ -2,7 +2,12 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas
   # GET /receita_medicas.json
   def index
-    @receita_medicas = ReceitaMedica.all
+    
+    if current_user.tipo == 2
+      @receita_medicas = ReceitaMedica.where(:medico_id => current_user.id)
+    elsif current_user.tipo == 1
+      @receita_medicas = ReceitaMedica.where(:paciente_id => current_user.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,16 +31,17 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/new
   # GET /receita_medicas/new.json
   def new
-    raise "Operacao invalida" if current_user.tipo != 2
-    
-    @receita_medica = ReceitaMedica.new
-    @medicamentos = Medicamento.all
-    @historicos = Historico.all
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @receita_medica }
-    end
-  end
+   raise "Operacao invalida" if current_user.tipo != 2
+   @receita_medica = ReceitaMedica.new
+   @medicamentos = Medicamento.all
+   @users = User.Pacientes.all
+   @historicos = Historico.all
+   @receita_medica.item_receitas.build
+   respond_to do |format|
+     format.html # new.html.erb
+     format.json { render json: @receita_medica }
+   end
+ end
 
   # GET /receita_medicas/1/edit
   def edit

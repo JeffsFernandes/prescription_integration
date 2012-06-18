@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <b>Historico</b><br>
-  <%= @receita_medica.historico_id %>
+  <b>Status</b><br>
+  <%= @receita_medica.status.nome %>
 </p>
 
 <p>
@@ -23,5 +23,4 @@
 <div class="form-actions">
   <%= link_to 'Back', receita_medicas_path, :class => 'btn'  %>
   <%= link_to 'Edit', edit_receita_medica_path(@receita_medica), :class => 'btn' %>
-  <%= link_to 'Delete', receita_medica_path(@receita_medica), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
