@@ -29,6 +29,7 @@ class ReceitaMedicasController < ApplicationController
     @receita_medica = ReceitaMedica.new
     @medicamentos = Medicamento.all
     @historicos = Historico.all
+    @receita_medica.medicamentos.build.build_item_receitas
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @receita_medica }

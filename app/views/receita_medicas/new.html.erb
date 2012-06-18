@@ -22,12 +22,20 @@
       </div>
     </div>
 
+    <% f.fields_for :item_receitas do |builder| %>
+      <%= builder.label :posologia%>
+      <%= builder.text_field :posologia %>
+        <%= builder.fields_for :medicamentos do |med| %>
+          <%= med.label :nome %>
+        <% end %>
+    <% end %>
+<!-- 
     <div class="control-group">
       <%= f.label :medicamento_id, :class => 'control-label' %>
       <div class="controls medicamento-select">
         <%= select(:medicamento, :nome, Medicamento.all.collect {|medicamento| [medicamento.nome, medicamento.id]}) %>
       </div>
-    </div>
+    </div> -->
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>

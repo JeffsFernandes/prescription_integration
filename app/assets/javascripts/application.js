@@ -52,4 +52,8 @@ $(document).ready(function() {
 			$('div.endereco').addClass("hidden");
 		}
 	});
+
+	$('.add-medicamento').click(function(){
+		$('p').
+	});
 });
