@@ -1,0 +1,8 @@
+<h3>Pesquisar por receita</h3>
+<%= form_tag('/receita_medicas/show_for_farmacia', :method => :get)  do %>
+	<p>
+		CPF <br/> <%= text_field_tag :search_cpf%></br>
+		Código da receita <br/> <%= text_field_tag :search_receita %></br>
+		<%= submit_tag "Procurar" %>
+	</p>
+<% end %>
