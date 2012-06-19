@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617173727) do
+ActiveRecord::Schema.define(:version => 20120618143045) do
 
   create_table "historicos", :force => true do |t|
     t.string   "nome"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120617173727) do
     t.integer  "medicamento_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "quantidade"
     t.string   "posologia"
   end
 
@@ -66,12 +67,13 @@ ActiveRecord::Schema.define(:version => 20120617173727) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-    t.string   "cnpj"
-    t.string   "nome"
+    t.integer  "tipo",                                  :default => 1
     t.string   "telefone"
     t.string   "cpf"
+    t.integer  "sexo"
     t.date     "data_nascimento"
-    t.string   "sexo"
+    t.string   "crm"
+    t.string   "cnpj"
     t.string   "rua"
     t.string   "numero"
     t.string   "complemento"
@@ -79,8 +81,7 @@ ActiveRecord::Schema.define(:version => 20120617173727) do
     t.string   "estado"
     t.string   "cep"
     t.string   "cidade"
-    t.integer  "tipo",                                  :default => 1
-    t.integer  "crm"
+    t.string   "nome"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

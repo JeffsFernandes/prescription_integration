@@ -15,14 +15,7 @@ class User < ActiveRecord::Base
   after_find :set_attributes_names
   TIPO = { "Paciente" => 1, "Médico" => 2, "Farmácia" => 3 }
   SEXO = { "Feminino" => 1, "Masculino" => 2 } 
-  
-  attr_accessor :tipo_print, :sexo_print
-
-  def set_attributes_names
-    self.tipo_print = User::TIPO.key(self.tipo)
-    self.sexo_print = User::SEXO.key(self.sexo)
-  end
-
+              
   def self.Pacientes
     User.where(:tipo => 1)
   end
@@ -32,7 +25,13 @@ class User < ActiveRecord::Base
   end
   
   def self.Farmacia
-    User.where(:tipo => 3)
+    User.where(:tipo => 3) 
+  end
+  attr_accessor :tipo_print, :sexo_print
+
+  def set_attributes_names
+    self.tipo_print = User::TIPO.key(self.tipo)
+    self.sexo_print = User::SEXO.key(self.sexo) 
   end
 
 end

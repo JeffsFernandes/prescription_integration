@@ -4,21 +4,33 @@ class ApiController < ActionController::Base
     password = params[:password]
     validated = false
     user = User.find_by_cpf(cpf)
-    validated = user.valid_password?(password) if !user.nil?  
-     
-    respond_to do |format|             
-        format.json { render json: validated }
-    end        
+    validated = user.valid_password?(password) if !user.nil?      
+    receitas = []
+
+    receitas = receitas(user) if validated
+    format_json_receitas validated, receitas       
+
   end
   
   def receitas(patient)
-    @receita_medica = ReceitaMedica.where(:patient_id => )
+    @receita_medica = ReceitaMedica.where(:paciente_id => patient.id)
+  end
 
+  def format_json_receitas (validated, receitas)
     respond_to do |format|
-      format.html # show.html.erb                                                
-      format.json { render json: {
-        :receita => @receita_medica, 
-        :medicamentos => @receita_medica.item_receitas.collect {|t| [t.medicamento.nome, t.posologia, t.quantidade]} } }
+      format.json { 
+        render :json => {:validated => validated,
+                         :receitas => receitas.collect{|rec| format_json(rec)}
+                       }
+      }
     end
   end
+
+  def format_json(receita)      
+    r = receita
+    [r.id, r.medico.nome, 
+      r.status.nome, r.created_at, 
+      r.item_receitas.collect {|t| ["#{t.medicamento.nome} - #{t.posologia} - #{t.quantidade}" ]} ]
+  end
 end
+
