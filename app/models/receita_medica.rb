@@ -7,4 +7,11 @@ class ReceitaMedica < ActiveRecord::Base
        belongs_to :status
        
        accepts_nested_attributes_for :item_receitas
+
+       def self.show_for_farmacia(cpf, receita_id, current_user)
+       		raise 'Operacao Invalida' if current_user.tipo != 3
+       		receita = ReceitaMedica.find(receita_id)
+       		return '' if receita.nil? or receita.paciente.cpf != cpf
+       		receita
+       end
 end
