@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                   :rua, :numero, :complemento, :bairro, :cidade, :estado, :cep,
                   :nome, :encrypted_password
 
+  validates :nome, :presence => true
   validates :cpf, :presence => true, :if => :medico_paciente?, :uniqueness => true
   validates :crm, :presence => true, :if => :medico?
   validates :cnpj, :presence => true, :if => :farmacia?
