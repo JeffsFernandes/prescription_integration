@@ -7,4 +7,8 @@ class ReceitaMedica < ActiveRecord::Base
        belongs_to :status
        
        accepts_nested_attributes_for :item_receitas
+
+       def belongs_to_patient?(paciente_cpf)
+       	self.paciente.cpf == paciente_cpf
+       end
 end

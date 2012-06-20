@@ -19,7 +19,6 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/1.json
   def show
     @receita_medica = ReceitaMedica.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb                                                
       format.json { render json: {
@@ -90,6 +89,21 @@ class ReceitaMedicasController < ApplicationController
     respond_to do |format|
       format.html { redirect_to receita_medicas_url }
       format.json { head :no_content }
+    end
+  end
+
+  def show_for_farmacia
+    if params[:search_cpf] && params[:search_receita] && current_user.tipo == 3
+      @receita_medica = ReceitaMedica.where(:id => params[:search_receita])
+      @receita_medica = @receita_medica.to_a.first
+      if @receita_medica.nil? or !@receita_medica.belongs_to_patient?(params[:search_cpf])
+        flash[:error] = 'Receita nao encontrada'
+        redirect_to venda_search_path
+      else
+        redirect_to @receita_medica        
+      end
+    else
+      raise 'Operacao invalida'
     end
   end
 end
