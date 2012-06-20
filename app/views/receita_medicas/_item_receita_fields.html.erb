@@ -1,0 +1,12 @@
+<div class="control-group">
+      <%= f.label :posologia, :class => 'control-label' %>
+      <div class="controls medicamento-select">
+        <%= f.text_field :posologia %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :medicamento_id, :class => 'control-label' %>
+      <div class="controls medicamento-select">
+        <%= f.collection_select :medicamento_id, @medicamentos, :id, :nome %>
+      </div>
+    </div>
