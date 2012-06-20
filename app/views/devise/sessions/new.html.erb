@@ -1,6 +1,6 @@
 <h2>Entrar</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "well"} ) do |f| %>
   <div>E-Mail<br/>
   <%= f.email_field :email %></div>
 
