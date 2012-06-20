@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
                   :rua, :numero, :complemento, :bairro, :cidade, :estado, :cep,
                   :nome, :encrypted_password
 
+  validates :cpf, :presence => true, :if => :medico_paciente?, :uniqueness => true
+  validates :crm, :presence => true, :if => :medico?
+  validates :cnpj, :presence => true, :if => :farmacia?
+
   after_find :set_attributes_names
   TIPO = { "Paciente" => 1, "Médico" => 2, "Farmácia" => 3 }
   SEXO = { "Feminino" => 1, "Masculino" => 2 } 
@@ -34,4 +38,15 @@ class User < ActiveRecord::Base
     self.sexo_print = User::SEXO.key(self.sexo) 
   end
 
+  def medico_paciente?
+    tipo == 1 or tipo == 2
+  end
+
+  def medico?
+    tipo == 2
+  end
+
+  def farmacia?
+    tipo == 3
+  end
 end

@@ -17,20 +17,9 @@
 
    <h3>Novo medicamento</h3>
    <%= f.fields_for :item_receitas do |builder| %>
-    <div class="control-group">
-      <%= builder.label :posologia, :class => 'control-label' %>
-      <div class="controls medicamento-select">
-        <%= builder.text_field :posologia %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= builder.label :medicamento_id, :class => 'control-label' %>
-      <div class="controls medicamento-select">
-        <%= builder.collection_select :medicamento_id, @medicamentos, :id, :nome %>
-      </div>
-      <%= builder.submit %>
-    </div>
+    <%= render 'item_receita_fields', :f => builder %>
    <% end %>
+         <%= link_to_add_fields "Adicionar Medicamento", f, :item_receitas, { :id => 'add_medicamento_link', :class => 'btn btn-info', :style => 'margin-bottom: 20px;' } %>
 
    <div class="form-actions">
      <%= f.submit nil, :class => 'btn btn-primary' %>

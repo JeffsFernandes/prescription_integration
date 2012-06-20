@@ -15,32 +15,43 @@
 //= require twitter/bootstrap
 //= require_tree .
 
+
+function remove_fields(link) {
+	$(link).closest(".fields").remove();
+}
+
+function destroy_fields(link) {
+	$(link).prev("input[type=hidden].destroy_field").val("1");
+	$(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+	var new_id = new Date().getTime();
+	var regexp = new RegExp("new_" + association, "g");
+	$(link).before(content.replace(regexp, new_id));
+}
+
 $(document).ready(function() {
-	$('div.tipo_paciente').addClass("hidden");
+
 	$('div.tipo_medico').addClass("hidden");
 	$('div.tipo_farmacia').addClass("hidden");
-	$('div.endereco').addClass("hidden");
 	$('#user_tipo').change(function(){
 		var tipo = $('#user_tipo :selected').val();
 
 		if (tipo == 1){
 			$('div.tipo_paciente').removeClass("hidden");
-			$('div.endereco').removeClass("hidden");
 			$('div.tipo_paciente').addClass("show");
-			$('div.endereco').addClass("show");
 			$('div.tipo_medico').addClass("hidden");
 			$('div.tipo_farmacia').addClass("hidden");
 		}
 		else if (tipo == 2){
 			$('div.tipo_medico').removeClass("hidden");
-			$('div.endereco').removeClass("hidden");
 			$('div.tipo_medico').addClass("show");
 			$('div.tipo_paciente').addClass("hidden");
 			$('div.tipo_farmacia').addClass("hidden");
 		}
 		else if (tipo == 3){
 			$('div.tipo_farmacia').removeClass("hidden");
-			$('div.endereco').removeClass("hidden");
 			$('div.tipo_farmacia').addClass("show");
 			$('div.tipo_medico').addClass("hidden");
 			$('div.tipo_paciente').addClass("hidden");
@@ -49,11 +60,7 @@ $(document).ready(function() {
 			$('div.tipo_paciente').addClass("hidden");
 			$('div.tipo_medico').addClass("hidden");
 			$('div.tipo_farmacia').addClass("hidden");
-			$('div.endereco').addClass("hidden");
 		}
 	});
 
-	$('.add-medicamento').click(function(){
-		$('p').
-	});
 });

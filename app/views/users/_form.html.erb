@@ -1,55 +1,84 @@
-<%= form_for @farmacia, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @users, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> /Farmacia</legend>
+    <legend><%= controller.action_name.capitalize %> /Usuario</legend>
 
     <div class="control-group">
-      <%= f.label :nome, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :nome, :class => 'text_field' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :endereco_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :endereco_id, :class => 'number_field' %>
-      </div>
+      <%= f.label :nome %><br />
+      <%= f.text_field :nome, :class => 'text_field' %>
     </div>
 	
-	<%= f.fields_for :endereco do |endereco_fields| %>
-    	<div class="control-group">
-    		<%= endereco_fields.label :rua %><br />
-    		<%= endereco_fields.text_field :rua %>
-  		</div>
-  	<div class="control-group">
-    <%= endereco_fields.label :numero %><br />
-    <%= endereco_fields.text_field :numero %>
-  </div>
-  <div class="control-group">
-    <%= endereco_fields.label :complemento %><br />
-    <%= endereco_fields.text_field :complemento %>
-  </div>
-  <div class="control-group">
-    <%= endereco_fields.label :bairro %><br />
-    <%= endereco_fields.text_field :bairro %>
-  </div>
-  <div class="control-group">
-    <%= endereco_fields.label :cidade %><br />
-    <%= endereco_fields.text_field :cidade %>
-  </div>
-  <div class="control-group">
-    <%= endereco_fields.label :estado %><br />
-    <%= endereco_fields.text_field :estado %>
-  </div>
-  <div class="control-group">
-    <%= endereco_fields.label :cep %><br />
-    <%= endereco_fields.text_field :cep %>
-  </div>
-  <% end %>
+    <% if @users.tipo == 1 or @users.tipo == 2 %>
+      <div>
+        <%= f.label :data_nascimento %>
+        <%= f.date_select :data_nascimento %>
+      </div>
+      <div class="control-group">
+        <%= f.label :cpf %><br />
+        <%= f.text_field :cpf, :readonly => true %>
+      </div>
+    <% end %>
+
+    <% if @users.tipo == 2 %>
+      <div class="control-group">
+        <%= f.label :crm %><br />
+        <%= f.text_field :crm, :readonly => true %>
+      </div>
+    <% end %>
+
+    <% if @users.tipo == 3 %>
+      <div class="control-group">
+        <%= f.label :cnpj %><br />
+        <%= f.text_field :cnpj, :readonly => true %>
+      </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :telefone %><br />
+      <%= f.text_field :telefone %>
+    </div>
+
+    <div>
+      <%= f.label :sexo %>
+      <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
+    </div>
+
+    <div class="control-group">
+    	<%= f.label :rua %><br />
+     	<%= f.text_field :rua %>
+    </div>
+    <div class="control-group">
+      <%= f.label :numero %><br />
+      <%= f.text_field :numero %>
+    </div>
+    <div class="control-group">
+      <%= f.label :complemento %><br />
+      <%= f.text_field :complemento %>
+    </div>
+    <div class="control-group">
+      <%= f.label :bairro %><br />
+      <%= f.text_field :bairro %>
+    </div>
+    <div class="control-group">
+      <%= f.label :cidade %><br />
+      <%= f.text_field :cidade %>
+    </div>
+    <div class="control-group">
+      <%= f.label :estado %><br />
+      <%= f.text_field :estado %>
+    </div>
+    <div class="control-group">
+      <%= f.label :cep %><br />
+      <%= f.text_field :cep %>
+    </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', farmacias_path, :class => 'btn' %>
+      <%= link_to 'Cancel', users_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

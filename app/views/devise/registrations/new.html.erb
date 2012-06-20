@@ -3,46 +3,33 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
-
-  <div>
-    <%= f.label :cpf %>
-    <%= f.text_field :cpf %>
-  </div>
-
-  <div>
-    <%= f.label :telefone %>
-    <%= f.text_field :telefone %>
-  </div>
-
-  <div>
-    <%= f.label :sexo %>
-    <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
-  </div>
-
-  <div>
-    <%= f.label :data_nascimento %>
-    <%= f.date_select :data_nascimento %>
-  </div>
-
-
   <div>
     <%= f.label :tipo %>
     <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo'} %>
   </div>
-  
-
+  <div>
+      <%= f.label :nome %>
+      <%= f.text_field :nome %>
+  </div>
   <div class = "tipo_paciente">
-
+    <div>
+      <%= f.label :cpf %>
+      <%= f.text_field :cpf %>
+    </div>
+    <div>
+      <%= f.label :data_nascimento %>
+      <%= f.date_select :data_nascimento %>
+    </div>
   </div>
   <div class = "tipo_medico">
+    <div>
+      <%= f.label :cpf %>
+      <%= f.text_field :cpf %>
+    </div>
+    <div>
+      <%= f.label :data_nascimento %>
+      <%= f.date_select :data_nascimento %>
+    </div>
     <div>
       <%= f.label :crm %>
       <%= f.text_field :crm %>
@@ -54,6 +41,26 @@
       <%= f.label :cnpj %>
       <%= f.text_field :cnpj %>
     </div>
+  </div>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div>
+
+
+  <div>
+    <%= f.label :telefone %>
+    <%= f.text_field :telefone %>
+  </div>
+
+  <div>
+    <%= f.label :sexo %>
+    <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
   </div>
 
   <div class = "endereco">

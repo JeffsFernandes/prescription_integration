@@ -19,14 +19,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Receitas</a>
+        <a class="brand" href="/">Receitas</a>
         <div class="nav-collapse">
           <ul class="nav">
 	<li><a href="/">Home</a></li>
-	<li><a href="/receita_medicas">Receitas</a></li>
-	<li><a href="/medicamentos">Medicamentos</a></li>         
-	<li><a href="/farmacias">Farmácias</a></li>     
-	<li><%= link_to 'Sair', destroy_user_session_path, :method => :delete %></li>
+  <% if user_signed_in? %>
+  	<li><a href="/receita_medicas">Receitas</a></li>
+  	<li><a href="/medicamentos">Medicamentos</a></li>         
+  	<li><a href="/farmacias">Farmácias</a></li>     
+  	<li><%= link_to 'Sair', destroy_user_session_path, :method => :delete %></li>
+  <% end %>
 </ul>
 
         </div>

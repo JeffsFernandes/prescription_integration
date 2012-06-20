@@ -3,6 +3,7 @@ PrescriptionIntegration::Application.routes.draw do
   get "api/sign_in"
 
   devise_for :users
+  resources :users
   resources :historicos
 
   resources :receita_medicas

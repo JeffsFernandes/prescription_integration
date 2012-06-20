@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20120618143045) do
     t.integer  "medicamento_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.integer  "quantidade"
     t.string   "posologia"
   end
 
@@ -67,13 +66,12 @@ ActiveRecord::Schema.define(:version => 20120618143045) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-    t.integer  "tipo",                                  :default => 1
+    t.string   "cnpj"
+    t.string   "nome"
     t.string   "telefone"
     t.string   "cpf"
-    t.integer  "sexo"
     t.date     "data_nascimento"
-    t.string   "crm"
-    t.string   "cnpj"
+    t.string   "sexo"
     t.string   "rua"
     t.string   "numero"
     t.string   "complemento"
@@ -81,7 +79,8 @@ ActiveRecord::Schema.define(:version => 20120618143045) do
     t.string   "estado"
     t.string   "cep"
     t.string   "cidade"
-    t.string   "nome"
+    t.integer  "tipo",                                  :default => 1
+    t.integer  "crm"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
