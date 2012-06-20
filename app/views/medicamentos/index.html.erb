@@ -4,7 +4,7 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
-      <th>Actions</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -13,12 +13,12 @@
         <td><%= medicamento.id %></td>
         <td><%= link_to medicamento.nome, medicamento_path(medicamento) %></td>
         <td>
-          <%= link_to 'Edit', edit_medicamento_path(medicamento), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', medicamento_path(medicamento), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Editar', edit_medicamento_path(medicamento), :class => 'btn btn-mini' %>
+          <%= link_to 'Remover', medicamento_path(medicamento), :method => :delete, :confirm => 'Tem certeza?', :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New', new_medicamento_path, :class => 'btn btn-primary' %>
+<%= link_to 'Novo medicamento', new_medicamento_path, :class => 'btn' %>

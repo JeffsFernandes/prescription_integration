@@ -3,132 +3,160 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal' } ) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="control-group">
-    <%= f.label :tipo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo'} %>
-    </div>
-  </div>
+  <fieldset>
+    <legend>Dados de Login</legend>
+      <div class="well fields">
+        <div class="control-group">
+          <%= f.label :email, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.email_field :email %>
+          </div>
+        </div>
 
-  <div class="control-group">
-    <%= f.label :nome , :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :nome %>
-    </div>
-  </div>
+        <div class="control-group">
+          <%= f.label :password, ('Senha'), :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password %>
+          </div>
+        </div>
 
-  <div class = "tipo_paciente">
-    <div class="control-group">
-      <%= f.label :cpf, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :cpf %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :data_nascimento, :class => 'control-label'%>
-      <div class="controls">
-        <%= f.date_select :data_nascimento %>
-      </div>
-    </div>
-  </div>
-
-  <div class = "tipo_medico">
-    <div class="control-group">
-      <%= f.label :cpf, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :cpf %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :data_nascimento, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.date_select :data_nascimento %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :crm, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :crm %>
-      </div>
-    </div>
-  </div>
-
-  <div class = "tipo_farmacia">
-    <div class="control-group">
-      <%= f.label :cnpj, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :cnpj %>
-      </div>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.email_field :email %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :password, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation %>
-    </div>
-  </div>
-
-
-  <div class="control-group">
-    <%= f.label :telefone, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :telefone %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :sexo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
-    </div>
-  </div>
-
-  <fieldset class = "endereco">
-     <div class="control-group">
-          <%= f.label :rua, :class => 'control-label' %>
-          <%= f.text_field :rua %>
-      </div>
-      <div class="control-group">
-        <%= f.label :numero, :class => 'control-label' %>
-        <%= f.text_field :numero %>
-      </div>
-      <div class="control-group">
-        <%= f.label :complemento, :class => 'control-label' %>
-        <%= f.text_field :complemento %>
-      </div>
-      <div class="control-group">
-        <%= f.label :bairro, :class => 'control-label' %>
-        <%= f.text_field :bairro %>
-      </div>
-      <div class="control-group">
-        <%= f.label :cidade, :class => 'control-label' %>
-        <%= f.text_field :cidade %>
-      </div>
-      <div class="control-group">
-        <%= f.label :estado, :class => 'control-label' %>
-        <%= f.text_field :estado %>
-      </div>
-      <div class="control-group">
-        <%= f.label :cep, :class => 'control-label' %>
-        <%= f.text_field :cep %>
+        <div class="control-group">
+          <%= f.label :password_confirmation, ('Confirmar senha'), :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
       </div>
   </fieldset>
-  <div><%= f.submit "Cadastrar" %></div>
+
+  <fieldset>
+    <legend>Dados Cadastrais</legend>
+      <div class="well fields">
+        <div class="control-group">
+          <%= f.label :tipo, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo'} %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :nome , :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :nome %>
+          </div>
+        </div>
+
+        <div class = "tipo_paciente">
+          <div class="control-group">
+            <%= f.label :cpf, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :cpf %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :data_nascimento, :class => 'control-label'%>
+            <div class="controls">
+              <%= f.date_select :data_nascimento %>
+            </div>
+          </div>
+        </div>
+
+        <div class = "tipo_medico">
+          <div class="control-group">
+            <%= f.label :cpf, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :cpf %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :data_nascimento, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.date_select :data_nascimento %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :crm, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :crm %>
+            </div>
+          </div>
+        </div>
+
+        <div class = "tipo_farmacia">
+          <div class="control-group">
+            <%= f.label :cnpj, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :cnpj %>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :telefone, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :telefone %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :sexo, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
+          </div>
+        </div>
+      </div>
+  </fieldset>
+
+  <fieldset class = "endereco">
+    <legend>Endereço</legend>
+    <div class="well fields">
+       <div class="control-group">
+            <%= f.label :rua, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :rua %>
+            </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :numero, ('Número'), :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :numero %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :complemento, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :complemento %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :bairro, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :bairro %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :cidade, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :cidade %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :estado, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :estado %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :cep, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :cep %>
+          </div>
+        </div>
+      </div>
+  </fieldset>
+  <div class="control-group">
+    <%= f.submit "Cadastrar" , :class => 'btn btn-primary' %>
+  </div>
 <% end %>
 
 

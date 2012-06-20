@@ -1,4 +1,4 @@
-<h1>/Medicamento</h1>
+<h1>Medicamento</h1>
 
 <p>
   <b>Nome</b><br>
@@ -6,7 +6,7 @@
 </p>
 
 <div class="form-actions">
-  <%= link_to 'Back', medicamentos_path, :class => 'btn'  %>
-  <%= link_to 'Edit', edit_medicamento_path(@medicamento), :class => 'btn' %>
-  <%= link_to 'Delete', medicamento_path(@medicamento), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to 'Voltar', medicamentos_path, :class => 'btn'  %>
+  <%= link_to 'Editar', edit_medicamento_path(@medicamento), :class => 'btn' %>
+  <%= link_to 'Remover', medicamento_path(@medicamento), :method => 'delete', :confirm => 'Tem certeza?', :class => 'btn btn-danger' %>
 </div>

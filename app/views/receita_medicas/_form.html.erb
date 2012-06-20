@@ -1,50 +1,28 @@
 <%= form_for @receita_medica, :html => { :class => 'form-horizontal' } do |f| %>
-  <fieldset>
-    <div class="control-group">
-      <%= f.label "Médico", :class => 'control-label' %>
-      <div class="controls">
-        <%= select(:receita_medica, :medico_id, User.Medicos.all.map{|u| [u.crm, u.id]})%>
-      </div>
-    </div>
+ <fieldset>
+   <div class="control-group">
+     <%= f.label :paciente_id, :class => 'control-label' %>
+     <div class="controls">
+        <%= @receita_medica.paciente.nome%>
+     </div>
+   </div>
 
-    <div class="control-group">
-      <%= f.label :paciente_id, :class => 'control-label' %>
-      <div class="controls">
-				<%= select(:receita_medica, :paciente_id, User.Pacientes.all.map{|u| [u.cpf, u.id]})%>
-      </div>
-    </div>
+   <div class="control-group">
+     <%= f.label :status_id, :class => 'control-label' %>
+     <div class="controls">
+        <%= select(:receita_medica, :status_id, Status.all.map{|u|[u.nome, u.id]})%>
+     </div>
+   </div>
 
-    <div class="control-group">
-      <%= f.label :historico_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :historico_id, :class => 'number_field' %>
-      </div>
-    </div>
+   <h3>Atualizar</h3>
+   <%= f.fields_for :item_receitas do |builder| %>
+    <%= render 'update_item_receita_fields', :f => builder %>
+   <% end %>
+         <%= link_to_add_fields "Adicionar Medicamento", f, :item_receitas, { :id => 'add_medicamento_link', :class => 'btn btn-info', :style => 'margin-bottom: 20px;' } %>
 
-    <div class="control-group">
-      <%= f.label :farmacia_id, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.number_field :farmacia_id, :class => 'number_field' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :data_prescricao, :class => 'control-label' %>
-      <div class="controls">
-        <%= f.date_select :data_prescricao, :class => 'date_select' %>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :status_id, :class => 'control-label' %>
-      <div class="controls">
-				<%= select(:receita_medica, :status_id, Status.all.map{|u| [u.nome, u.id]})%>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', receita_medicas_path, :class => 'btn' %>
-    </div>
-  </fieldset>
+   <div class="form-actions">
+     <%= f.submit nil, :class => 'btn btn-primary' %>
+     <%= link_to 'Cancelar', receita_medicas_path, :class => 'btn' %>
+   </div>
+ </fieldset>
 <% end %>

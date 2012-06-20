@@ -1,84 +1,156 @@
 <%= form_for @users, :html => { :class => 'form-horizontal' } do |f| %>
-  <fieldset>
-    <legend><%= controller.action_name.capitalize %> /Usuario</legend>
+    <fieldset>
+    <legend>Dados de Login</legend>
+      <div class="well fields">
+        <div class="control-group">
+          <%= f.label :email, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.email_field :email %>
+          </div>
+        </div>
 
-    <div class="control-group">
-      <%= f.label :nome %><br />
-      <%= f.text_field :nome, :class => 'text_field' %>
-    </div>
-	
-    <% if @users.tipo == 1 or @users.tipo == 2 %>
-      <div>
-        <%= f.label :data_nascimento %>
-        <%= f.date_select :data_nascimento %>
+        <div class="control-group">
+          <%= f.label :password, ('Senha'), :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :password_confirmation, ('Confirmar senha'), :class => 'control-label' %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
       </div>
-      <div class="control-group">
-        <%= f.label :cpf %><br />
-        <%= f.text_field :cpf, :readonly => true %>
-      </div>
-    <% end %>
-
-    <% if @users.tipo == 2 %>
-      <div class="control-group">
-        <%= f.label :crm %><br />
-        <%= f.text_field :crm, :readonly => true %>
-      </div>
-    <% end %>
-
-    <% if @users.tipo == 3 %>
-      <div class="control-group">
-        <%= f.label :cnpj %><br />
-        <%= f.text_field :cnpj, :readonly => true %>
-      </div>
-    <% end %>
-
-    <div class="control-group">
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :telefone %><br />
-      <%= f.text_field :telefone %>
-    </div>
-
-    <div>
-      <%= f.label :sexo %>
-      <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
-    </div>
-
-    <div class="control-group">
-    	<%= f.label :rua %><br />
-     	<%= f.text_field :rua %>
-    </div>
-    <div class="control-group">
-      <%= f.label :numero %><br />
-      <%= f.text_field :numero %>
-    </div>
-    <div class="control-group">
-      <%= f.label :complemento %><br />
-      <%= f.text_field :complemento %>
-    </div>
-    <div class="control-group">
-      <%= f.label :bairro %><br />
-      <%= f.text_field :bairro %>
-    </div>
-    <div class="control-group">
-      <%= f.label :cidade %><br />
-      <%= f.text_field :cidade %>
-    </div>
-    <div class="control-group">
-      <%= f.label :estado %><br />
-      <%= f.text_field :estado %>
-    </div>
-    <div class="control-group">
-      <%= f.label :cep %><br />
-      <%= f.text_field :cep %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', users_path, :class => 'btn' %>
-    </div>
   </fieldset>
+
+  <fieldset>
+    <legend>Dados Cadastrais</legend>
+      <div class="well fields">
+        <div class="control-group">
+          <%= f.label :tipo, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo'} %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :nome , :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :nome %>
+          </div>
+        </div>
+
+        <div class = "tipo_paciente">
+          <div class="control-group">
+            <%= f.label :cpf, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :cpf, :readonly => true %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :data_nascimento, :class => 'control-label'%>
+            <div class="controls">
+              <%= f.date_select :data_nascimento %>
+            </div>
+          </div>
+        </div>
+
+        <div class = "tipo_medico">
+          <div class="control-group">
+            <%= f.label :cpf, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :cpf, :readonly => true %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :data_nascimento, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.date_select :data_nascimento %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :crm, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :crm, :readonly => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class = "tipo_farmacia">
+          <div class="control-group">
+            <%= f.label :cnpj, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :cnpj, :readonly => true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :telefone, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :telefone %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :sexo, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
+          </div>
+        </div>
+      </div>
+  </fieldset>
+
+  <fieldset class = "endereco">
+    <legend>Endereço</legend>
+    <div class="well fields">
+       <div class="control-group">
+            <%= f.label :rua, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :rua %>
+            </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :numero, ('Número'), :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :numero %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :complemento, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :complemento %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :bairro, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :bairro %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :cidade, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :cidade %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :estado, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :estado %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :cep, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_field :cep %>
+          </div>
+        </div>
+      </div>
+  </fieldset>
+    <div class="control-group">
+      <%= f.submit "Atualizar" , :class => 'btn btn-primary' %>
+    </div>
 <% end %>

@@ -1,24 +1,22 @@
-<h1>Farmacias</h1>
+<h1>Usuários</h1>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
       <th>Nome</th>
-      <th>Actions</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    <% @farmacias.each do |farmacia| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= farmacia.id %></td>
-        <td><%= link_to farmacia.nome, farmacia_path(farmacia) %></td>
+        <td><%= user.id %></td>
+        <td><%= link_to user.nome, user_path(user) %></td>
         <td>
-          <%= link_to 'Edit', edit_farmacia_path(farmacia), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', farmacia_path(farmacia), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Editar', edit_user_path(user), :class => 'btn btn-mini' %>
+          <%= link_to 'Remover', user_path(user), :method => :delete, :confirm => 'Tem certeza?', :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New', new_farmacia_path, :class => 'btn btn-primary' %>
