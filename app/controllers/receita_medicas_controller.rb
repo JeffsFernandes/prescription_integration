@@ -1,4 +1,5 @@
 class ReceitaMedicasController < ApplicationController
+  before_filter :authenticate_user!
   # GET /receita_medicas
   # GET /receita_medicas.json
   def index

@@ -38,7 +38,7 @@
         <div class="control-group">
           <%= f.label :tipo, :class => 'control-label' %>
           <div class="controls">
-            <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo'} %>
+            <%= f.select :tipo, User::TIPO, {:prompt => ""}, {:class =>'tipo', :readonly => true} %>
           </div>
         </div>
 

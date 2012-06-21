@@ -5,7 +5,8 @@ PrescriptionIntegration::Application.routes.draw do
   get "api/sign_in"
 
   get "receita_medicas/show_for_farmacia"
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
+
   resources :users
   resources :historicos
 
