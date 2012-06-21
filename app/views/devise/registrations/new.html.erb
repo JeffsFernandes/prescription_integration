@@ -46,13 +46,13 @@
           </div>
         </div>
 
-        <div class = "tipo_paciente">
-          <div class="control-group">
+        <div class="control-group">
             <%= f.label :cpf, :class => 'control-label' %>
             <div class="controls">
               <%= f.text_field :cpf %>
             </div>
-          </div>
+        </div>
+        <div class = "tipo_paciente">
           <div class="control-group">
             <%= f.label :data_nascimento, :class => 'control-label'%>
             <div class="controls">
@@ -63,21 +63,15 @@
 
         <div class = "tipo_medico">
           <div class="control-group">
-            <%= f.label :cpf, :class => 'control-label' %>
+            <%= f.label :crm, :class => 'control-label' %>
             <div class="controls">
-              <%= f.text_field :cpf %>
+              <%= f.text_field :crm %>
             </div>
           </div>
           <div class="control-group">
             <%= f.label :data_nascimento, :class => 'control-label' %>
             <div class="controls">
               <%= f.date_select :data_nascimento %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :crm, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_field :crm %>
             </div>
           </div>
         </div>
@@ -106,6 +100,12 @@
         </div>
       </div>
   </fieldset>
+
+  <h3>Cadastrar Pessoas Autorizadas</h3>
+   <%= f.fields_for :autorizados do |builder| %>
+    <%= render 'autorizado_fields', :f => builder %>
+   <% end %>
+         <%= link_to_add_fields "Adicionar CPF da Pessoa Autorizada", f, :autorizados, { :id => 'add_autorizado_link', :class => 'btn btn-info', :style => 'margin-bottom: 20px;' } %>
 
   <fieldset class = "endereco">
     <legend>Endereço</legend>
@@ -161,3 +161,7 @@
 
 
 <%= render :partial => "devise/shared/links" %>
+
+<%= javascript_tag do %>
+  remove_user_fields();
+<% end %>

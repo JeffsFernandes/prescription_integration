@@ -28,6 +28,8 @@
             	<li><a href="/medicamentos">Medicamentos</a></li>         
             	<li><a href="/farmacias">Farmácias</a></li>     
             	<li><%= link_to 'Sair', destroy_user_session_path, :method => :delete %></li>
+            <% else%>  
+              <li><%= link_to 'Entrar', new_user_session_path %></li>
             <% end %>
           </ul>
         </div>

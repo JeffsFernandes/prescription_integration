@@ -9,6 +9,7 @@ PrescriptionIntegration::Application.routes.draw do
   post "receita_medicas/vender"
   
   devise_for :users
+
   resources :users
   resources :historicos
 

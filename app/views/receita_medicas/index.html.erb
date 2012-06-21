@@ -19,7 +19,7 @@
         <td><%= receita_medica.created_at %></td>
         <td><%= receita_medica.status.nome %>
         <td>
-          <%= link_to 'Editar', edit_receita_medica_path(receita_medica), :class => 'btn btn-mini' %>
+          <%= link_to 'Editar', edit_receita_medica_path(receita_medica), :class => 'btn btn-mini' if current_user.tipo == 2 %>
         </td>
       </tr>
     <% end %>

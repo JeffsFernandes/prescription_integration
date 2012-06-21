@@ -1,6 +1,6 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
-
+  has_many :autorizados
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
                   :tipo, :sexo, :data_nascimento, :crm, :cpf, :telefone, :cnpj, 
                   :rua, :numero, :complemento, :bairro, :cidade, :estado, :cep,
-                  :nome, :encrypted_password
+                  :nome, :encrypted_password, :autorizados_attributes
+
+  accepts_nested_attributes_for :autorizados
 
   validates :nome, :presence => true
   validates :cpf, :presence => true, :if => :medico_paciente?, :uniqueness => true

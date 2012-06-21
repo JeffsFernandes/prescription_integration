@@ -31,8 +31,7 @@ function add_fields(link, association, content) {
 	$(link).before(content.replace(regexp, new_id));
 }
 
-$(document).ready(function() {
-
+function remove_user_fields(){
 	$('div.tipo_medico').addClass("hidden");
 	$('div.tipo_farmacia').addClass("hidden");
 	$('#user_tipo').change(function(){
@@ -61,6 +60,10 @@ $(document).ready(function() {
 			$('div.tipo_medico').addClass("hidden");
 			$('div.tipo_farmacia').addClass("hidden");
 		}
-	});
+	});	
+}
+
+$(document).ready(function() {
+
 
 });

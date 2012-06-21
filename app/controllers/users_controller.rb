@@ -1,5 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
+  # before_filter :authenticate_user!
   # GET /users
   # GET /users.json
   def index
@@ -26,7 +27,6 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @users = User.find(params[:id])
+    @users.autorizados.build
   end
 
   # PUT /users/1
