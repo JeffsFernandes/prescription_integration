@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618143045) do
+ActiveRecord::Schema.define(:version => 20120621131253) do
+
+  create_table "autorizados", :force => true do |t|
+    t.string   "cpf"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
 
   create_table "historicos", :force => true do |t|
     t.string   "nome"

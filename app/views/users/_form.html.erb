@@ -1,4 +1,4 @@
-<%= form_for @users, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for current_user, :html => { :class => 'form-horizontal' } do |f| %>
     <fieldset>
     <legend>Dados de Login</legend>
       <div class="well fields">
@@ -25,6 +25,13 @@
       </div>
   </fieldset>
 
+  <% if current_user.tipo == 1 %>
+    <h3>Cadastrar Pessoas Autorizadas</h3>
+     <%= f.fields_for :autorizados do |builder| %>
+      <%= render 'autorizado_fields', :f => builder %>
+     <% end %>
+           <%= link_to_add_fields "Adicionar CPF da Pessoa Autorizada", f, :autorizados, { :id => 'add_autorizado_link', :class => 'btn btn-info', :style => 'margin-bottom: 20px;' } %>
+  <% end %>
   <fieldset>
     <legend>Dados Cadastrais</legend>
       <div class="well fields">
@@ -41,52 +48,57 @@
             <%= f.text_field :nome %>
           </div>
         </div>
+        
+        <% if current_user.tipo == 1 %>
+          <div class = "tipo_paciente">
+            <div class="control-group">
+              <%= f.label :cpf, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_field :cpf %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :data_nascimento, :class => 'control-label'%>
+              <div class="controls">
+                <%= f.date_select :data_nascimento %>
+              </div>
+            </div>
+          </div>
+        <% end %>
 
-        <div class = "tipo_paciente">
-          <div class="control-group">
-            <%= f.label :cpf, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_field :cpf, :readonly => true %>
+        <% if current_user.tipo == 2 %>
+          <div class = "tipo_medico">
+            <div class="control-group">
+              <%= f.label :cpf, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_field :cpf %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :crm, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_field :crm %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :data_nascimento, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.date_select :data_nascimento %>
+              </div>
             </div>
           </div>
-          <div class="control-group">
-            <%= f.label :data_nascimento, :class => 'control-label'%>
-            <div class="controls">
-              <%= f.date_select :data_nascimento %>
-            </div>
-          </div>
-        </div>
+        <% end %>
 
-        <div class = "tipo_medico">
-          <div class="control-group">
-            <%= f.label :cpf, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_field :cpf, :readonly => true %>
+        <% if current_user.tipo == 3 %>
+          <div class = "tipo_farmacia">
+            <div class="control-group">
+              <%= f.label :cnpj, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_field :cnpj, :readonly => true %>
+              </div>
             </div>
           </div>
-          <div class="control-group">
-            <%= f.label :data_nascimento, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.date_select :data_nascimento %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :crm, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_field :crm, :readonly => true %>
-            </div>
-          </div>
-        </div>
-
-        <div class = "tipo_farmacia">
-          <div class="control-group">
-            <%= f.label :cnpj, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_field :cnpj, :readonly => true %>
-            </div>
-          </div>
-        </div>
-
+        <% end %>
         <div class="control-group">
           <%= f.label :telefone, :class => 'control-label' %>
           <div class="controls">
@@ -153,4 +165,34 @@
     <div class="control-group">
       <%= f.submit "Atualizar" , :class => 'btn btn-primary' %>
     </div>
+<% end %>
+
+<%= javascript_tag do %>
+  $('#user_tipo').change(function(){
+    var tipo = <%= current_user.tipo %>;
+
+    if (tipo == 1){
+      $('div.tipo_paciente').removeClass("hidden");
+      $('div.tipo_paciente').addClass("show");
+      $('div.tipo_medico').addClass("hidden");
+      $('div.tipo_farmacia').addClass("hidden");
+    }
+    else if (tipo == 2){
+      $('div.tipo_medico').removeClass("hidden");
+      $('div.tipo_medico').addClass("show");
+      $('div.tipo_paciente').addClass("hidden");
+      $('div.tipo_farmacia').addClass("hidden");
+    }
+    else if (tipo == 3){
+      $('div.tipo_farmacia').removeClass("hidden");
+      $('div.tipo_farmacia').addClass("show");
+      $('div.tipo_medico').addClass("hidden");
+      $('div.tipo_paciente').addClass("hidden");
+    }
+    else{
+      $('div.tipo_paciente').addClass("hidden");
+      $('div.tipo_medico').addClass("hidden");
+      $('div.tipo_farmacia').addClass("hidden");
+    }
+  }); 
 <% end %>
