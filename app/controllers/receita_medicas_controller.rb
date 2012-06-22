@@ -107,4 +107,15 @@ class ReceitaMedicasController < ApplicationController
       raise 'Operacao invalida'
     end
   end
+
+  def vender
+    venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita])
+    venda.save
+    @receita_medica = ReceitaMedica.find(params[:receita])
+    @receita_medica.status_id = Status.find_by_nome('Finalizado').id
+
+    @receita_medica.save
+
+    redirect_to @receita_medica, notice: 'Venda dos medicamentos da receita efetuada'
+  end
 end

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
   end
-
+  
   create_table "historicos", :force => true do |t|
     t.string   "nome"
     t.text     "descricao"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.integer  "medicamento_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "quantidade"
     t.string   "posologia"
   end
 
@@ -73,12 +74,13 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-    t.string   "cnpj"
-    t.string   "nome"
+    t.integer  "tipo",                                  :default => 1
     t.string   "telefone"
     t.string   "cpf"
+    t.integer  "sexo"
     t.date     "data_nascimento"
-    t.string   "sexo"
+    t.string   "crm"
+    t.string   "cnpj"
     t.string   "rua"
     t.string   "numero"
     t.string   "complemento"
@@ -86,11 +88,17 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.string   "estado"
     t.string   "cep"
     t.string   "cidade"
-    t.integer  "tipo",                                  :default => 1
-    t.integer  "crm"
+    t.string   "nome"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vendas", :force => true do |t|
+    t.integer  "receita_medica_id"
+    t.integer  "farmacia_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
 end
