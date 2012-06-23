@@ -1,0 +1,2 @@
+module MedicosAutorizadosHelper
+end

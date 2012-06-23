@@ -1,0 +1,29 @@
+<h1>Listing medicos_autorizados</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Medico</th>
+    <th>Create</th>
+    <th>Destroy</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medicos_autorizados.each do |medicos_autorizado| %>
+  <tr>
+    <td><%= medicos_autorizado.user_id %></td>
+    <td><%= medicos_autorizado.medico_id %></td>
+    <td><%= medicos_autorizado.create %></td>
+    <td><%= medicos_autorizado.destroy %></td>
+    <td><%= link_to 'Show', medicos_autorizado %></td>
+    <td><%= link_to 'Edit', edit_medicos_autorizado_path(medicos_autorizado) %></td>
+    <td><%= link_to 'Destroy', medicos_autorizado, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medicos autorizado', new_medicos_autorizado_path %>

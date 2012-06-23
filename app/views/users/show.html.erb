@@ -15,6 +15,25 @@
   <% end %>
 </p>
 
+<h2>Médicos Autorizados</h2>
+<ul>
+  <% for medico_autorizado in @user.medicos_autorizados %>
+    <li>
+      <%= medico_autorizado.medico.nome %>
+      (<%= link_to "Remover", medico_autorizado, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Autorizar Médicos", "/medicos" %>
+
+<% if @user.tipo == 2 %>
+  <% for user in @user.pacientes %>
+      <li>
+        <%= user.nome %>
+      </li>
+  <% end %>
+<% end %>
 <div class="form-actions">
   <%= link_to 'Editar', edit_user_path(@user), :class => 'btn' %>
 </div>

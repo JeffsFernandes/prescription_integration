@@ -1,0 +1,19 @@
+<h1>Médicos</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @medicos.each do |medico| %>
+      <tr>
+        <td><%= link_to medico.nome, user_path(medico) %></td>
+        <td>
+          <%= link_to 'Adicionar Médico', medicos_autorizados_path(:medico_id => medico), :method => :post, :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,7 @@
 PrescriptionIntegration::Application.routes.draw do
 
+  resources :medicos_autorizados
+
   get "venda/search"
 
   get "api/sign_in"
@@ -24,4 +26,7 @@ PrescriptionIntegration::Application.routes.draw do
   resources :medicamentos
   resources :farmacias
   resources :enderecos
+
+  match "/medicos" => "users#medicos"
+  match "/pacientes" => "users#pacientes"
 end
