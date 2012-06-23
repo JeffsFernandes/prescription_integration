@@ -109,7 +109,7 @@ class ReceitaMedicasController < ApplicationController
   end
 
   def vender
-    venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita], :comprador)
+    venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita])
     venda.save
     @receita_medica = ReceitaMedica.find(params[:receita])
     @receita_medica.status_id = Status.find_by_nome('Finalizado').id
