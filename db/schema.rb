@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621131253) do
+ActiveRecord::Schema.define(:version => 20120623130335) do
 
   create_table "autorizados", :force => true do |t|
     t.string   "cpf"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.integer  "medicamento_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.integer  "quantidade"
     t.string   "posologia"
   end
 
@@ -74,12 +73,6 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
-    t.integer  "tipo",                                  :default => 1
-    t.string   "telefone"
-    t.string   "cpf"
-    t.integer  "sexo"
-    t.date     "data_nascimento"
-    t.string   "crm"
     t.string   "cnpj"
     t.string   "rua"
     t.string   "numero"
@@ -89,6 +82,12 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.string   "cep"
     t.string   "cidade"
     t.string   "nome"
+    t.string   "tipo"
+    t.string   "cpf"
+    t.string   "crm"
+    t.date     "data_nascimento"
+    t.string   "telefone"
+    t.integer  "sexo"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
