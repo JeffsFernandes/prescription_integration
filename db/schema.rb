@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120623154713) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "posologia"
+    t.string   "quantidade"
   end
 
   create_table "medicamentos", :force => true do |t|

@@ -7,6 +7,9 @@ PrescriptionIntegration::Application.routes.draw do
   get "api/sign_in"
 
   get "receita_medicas/show_for_farmacia"
+  
+  get "receita_medicas/show_for_medico"
+  get "receita_medicas/search"
 
   post "receita_medicas/vender"
   

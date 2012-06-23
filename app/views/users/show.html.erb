@@ -15,6 +15,7 @@
   <% end %>
 </p>
 
+<% if @user.tipo == 1 %>
 <h2>Médicos Autorizados</h2>
 <ul>
   <% for medico_autorizado in @user.medicos_autorizados %>
@@ -27,13 +28,20 @@
 
 <p><%= link_to "Autorizar Médicos", "/medicos" %>
 
+<% end %>
+
 <% if @user.tipo == 2 %>
+  <h2>Pacientes Autorizados</h2>
   <% for user in @user.pacientes %>
       <li>
         <%= user.nome %>
       </li>
   <% end %>
+</br>
+  <h2> <%= link_to "Visualizar receita", "/receita_medicas/search" %>
 <% end %>
-<div class="form-actions">
-  <%= link_to 'Editar', edit_user_path(@user), :class => 'btn' %>
-</div>
+
+<% if @user.tipo == 3 %>
+    </br>
+    <h2> <%= link_to "Vender receita", "/venda/search" %>
+<% end %>

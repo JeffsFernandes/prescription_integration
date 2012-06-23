@@ -11,7 +11,7 @@
    <div class="control-group">
      <%= f.label :status_id, :class => 'control-label' %>
      <div class="controls">
-        <%= select(:receita_medica, :status_id, Status.all.map{|u|[u.nome, u.id]})%>
+        <%= select(:receita_medica, :status_id, [Status.find_by_nome('Pendente'), Status.find_by_nome('Uso continuo')].map{|u|[u.nome, u.id]})%>
      </div>
    </div>
 
@@ -19,10 +19,10 @@
    <%= f.fields_for :item_receitas do |builder| %>
     <%= render 'item_receita_fields', :f => builder %>
    <% end %>
-         <%= link_to_add_fields "Adicionar Medicamento", f, :item_receitas, { :id => 'add_medicamento_link', :class => 'btn btn-info', :style => 'margin-bottom: 20px;' } %>
+    <%= link_to_add_fields "Adicionar Medicamento", f, :item_receitas, { :id => 'add_medicamento_link', :class => 'btn btn-info', :style => 'margin-bottom: 20px;' } %>
 
    <div class="form-actions">
-     <%= f.submit nil, :class => 'btn btn-primary' %>
+     <%= f.submit 'Criar receita', :class => 'btn btn-primary' %>
      <%= link_to 'Cancelar', receita_medicas_path, :class => 'btn' %>
    </div>
  </fieldset>

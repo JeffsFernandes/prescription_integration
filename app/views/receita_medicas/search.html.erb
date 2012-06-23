@@ -1,0 +1,11 @@
+<h3>Pesquisar por receita</h3>
+<p>
+	<%= flash[:error] if flash[:error] %>
+</p>
+<%= form_tag('/receita_medicas/show_for_medico', :method => :get)  do %>
+	<p>
+		CPF <br/> <%= text_field_tag :search_cpf%></br>
+		Código da receita <br/> <%= text_field_tag :search_receita %></br>
+		<%= submit_tag "Procurar" %>
+	</p>
+<% end %>
