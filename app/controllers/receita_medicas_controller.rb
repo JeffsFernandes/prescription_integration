@@ -31,7 +31,6 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/new
   # GET /receita_medicas/new.json
   def new
-   raise "Operacao invalida" if current_user.tipo != 2
    @receita_medica = ReceitaMedica.new
    @medicamentos = Medicamento.all
    @users = User.Pacientes.all

@@ -4,6 +4,16 @@
   <b>Nome</b><br>
   <%= @user.nome %>
 </p>
+<p>
+  <b>Tipo</b><br>
+  <% if @user.tipo == 1 %>
+  	Paciente
+  <% elsif @user.tipo == 2 %>
+  	Médico 
+  <% else @user.tipo == 3 %>
+  	Farmácia
+  <% end %>
+</p>
 
 <div class="form-actions">
   <%= link_to 'Editar', edit_user_path(@user), :class => 'btn' %>

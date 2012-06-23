@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20120623130335) do
     t.string   "cep"
     t.string   "cidade"
     t.string   "nome"
-    t.string   "tipo"
+    t.integer  "tipo"
     t.string   "cpf"
     t.string   "crm"
     t.date     "data_nascimento"

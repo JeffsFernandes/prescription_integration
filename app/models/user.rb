@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   after_find :set_attributes_names
   TIPO = { "Paciente" => 1, "Médico" => 2, "Farmácia" => 3 }
-  SEXO = { "Feminino" => 1, "Masculino" => 2 } 
+  SEXO = { "Feminino" => 1, "Masculino" => 2 }
               
   def self.Pacientes
     User.where(:tipo => 1)
