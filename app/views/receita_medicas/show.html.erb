@@ -1,5 +1,7 @@
 <h1>Receita Médica</h1>
 
+<%= flash[:msg] if !flash[:msg].nil? %>
+
 <p>
   <b>Medico</b><br>
   <%= @receita_medica.medico.crm %>

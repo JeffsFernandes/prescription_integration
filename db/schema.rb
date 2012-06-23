@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120621131253) do
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
   end
-  
+
   create_table "historicos", :force => true do |t|
     t.string   "nome"
     t.text     "descricao"

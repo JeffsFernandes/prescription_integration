@@ -97,11 +97,11 @@ class ReceitaMedicasController < ApplicationController
     if params[:search_cpf] && params[:search_receita] && current_user.tipo == 3
       @receita_medica = ReceitaMedica.where(:id => params[:search_receita])
       @receita_medica = @receita_medica.to_a.first
-      if @receita_medica.nil? or !@receita_medica.belongs_to_patient?(params[:search_cpf])
+      if !@receita_medica.nil? && (@receita_medica.belongs_to_patient?(params[:search_cpf]) || Autorizado.where(:cpf => params[:search_cpf], :user_id => @receita_medica.paciente_id).to_a.size > 0)
+        redirect_to @receita_medica 
+      else       
         flash[:error] = 'Receita nao encontrada'
         redirect_to venda_search_path
-      else
-        redirect_to @receita_medica        
       end
     else
       raise 'Operacao invalida'
@@ -109,13 +109,13 @@ class ReceitaMedicasController < ApplicationController
   end
 
   def vender
-    venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita])
+    venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita], :comprador)
     venda.save
     @receita_medica = ReceitaMedica.find(params[:receita])
     @receita_medica.status_id = Status.find_by_nome('Finalizado').id
 
     @receita_medica.save
-
-    redirect_to @receita_medica, notice: 'Venda dos medicamentos da receita efetuada'
+    flash[:msg] = 'Venda da receita registrada com sucesso!'
+    redirect_to @receita_medica
   end
 end
