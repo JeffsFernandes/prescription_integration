@@ -37,4 +37,11 @@
         <%= user.nome %>
       </li>
   <% end %>
+</br>
+  <h2> <%= link_to "Visualizar receita", "/receita_medicas/search" %>
+<% end %>
+
+<% if @user.tipo == 3 %>
+    </br>
+    <h2> <%= link_to "Vender receita", "/venda/search" %>
 <% end %>

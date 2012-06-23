@@ -110,6 +110,21 @@ class ReceitaMedicasController < ApplicationController
     end
   end
 
+  def show_for_medico
+    if params[:search_cpf] && params[:search_receita] && current_user.tipo == 2
+      @receita_medica = ReceitaMedica.find(params[:search_receita])
+  
+      if !@receita_medica.nil? && (@receita_medica.medico_id == current_user.id || MedicosAutorizado.where(:medico_id => current_user.id, :user_id => @receita_medica.paciente_id).to_a.size > 0)
+        redirect_to @receita_medica, :editable => @receita_medica.medico_id == current_user.id
+      else       
+        flash[:error] = 'Receita nao encontrada'
+        redirect_to venda_search_path
+      end
+    else
+      raise 'Operacao invalida'
+    end
+  end
+
   def vender
     venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita])
     venda.save
