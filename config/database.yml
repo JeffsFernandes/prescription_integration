@@ -17,13 +17,14 @@ development:
   encoding: unicode
   database: prescription_development
   pool: 5
-  username: fsi
-  password: fsi12
+  username: postgres
+  password: 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-
+  host: localhost
+  port: 1234
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -42,8 +43,10 @@ test:
   encoding: unicode
   database: prescription_test
   pool: 5
-  username: fsi
-  password: fsi12
+  username: postgres
+  password: 
+  host: localhost
+  port: 1234
 
 production:
   adapter: postgresql
