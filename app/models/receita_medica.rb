@@ -13,6 +13,6 @@ class ReceitaMedica < ActiveRecord::Base
 	end
 
 	def pode_ser_vendida?
-		self.status_id == Status.find_by_nome('Pendente').id || Status.find_by_nome('Uso continuo').id
+		self.status_id == Status.find_by_nome('Pendente').id || self.status_id == Status.find_by_nome('Uso continuo').id
 	end
 end
