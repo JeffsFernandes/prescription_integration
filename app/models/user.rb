@@ -1,6 +1,13 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
   has_many :autorizados
+
+  has_many :medicos_autorizados
+  has_many :medicos, :through => :medicos_autorizados
+
+  has_many :meus_pacientes, :class_name => "MedicosAutorizado", :foreign_key => "medico_id"
+  has_many :pacientes, :through => :meus_pacientes, :source => :user
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

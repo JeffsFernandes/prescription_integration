@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623152928) do
+ActiveRecord::Schema.define(:version => 20120623154713) do
 
   create_table "autorizados", :force => true do |t|
     t.string   "cpf"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20120623152928) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.boolean  "principio_ativo"
+  end
+
+  create_table "medicos_autorizados", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "medico_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "receita_medicas", :force => true do |t|

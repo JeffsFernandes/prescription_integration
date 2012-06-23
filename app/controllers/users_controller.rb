@@ -12,6 +12,29 @@ class UsersController < ApplicationController
     end
   end
 
+  # before_filter :authenticate_user!
+  # GET /users
+  # GET /users.json
+  def medicos
+    @medicos = User.where(:tipo => 2)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @medicos }
+    end
+  end
+
+  # before_filter :authenticate_user!
+  # GET /users
+  # GET /users.json
+  def pacientes
+    @users = User.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
