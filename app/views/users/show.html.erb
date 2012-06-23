@@ -15,7 +15,7 @@
   <% end %>
 </p>
 
-<% if current_user.tipo == 1 %>
+<% if @user.tipo == 1 %>
 <h2>Médicos Autorizados</h2>
 <ul>
   <% for medico_autorizado in @user.medicos_autorizados %>
