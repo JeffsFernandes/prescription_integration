@@ -8,6 +8,8 @@ class ReceitaMedicasController < ApplicationController
       @receita_medicas = ReceitaMedica.where(:medico_id => current_user.id)
     elsif current_user.tipo == 1
       @receita_medicas = ReceitaMedica.where(:paciente_id => current_user.id)
+    elsif current_user.tipo == 3
+      @receita_medicas = Venda.receitas_medicas(current_user.id)
     end
 
     respond_to do |format|
@@ -97,7 +99,7 @@ class ReceitaMedicasController < ApplicationController
     if params[:search_cpf] && params[:search_receita] && current_user.tipo == 3
       @receita_medica = ReceitaMedica.where(:id => params[:search_receita])
       @receita_medica = @receita_medica.to_a.first
-      if !@receita_medica.nil? && @receita_medica.pode_ser_vendida? && (@receita_medica.belongs_to_patient?(params[:search_cpf]) || Autorizado.where(:cpf => params[:search_cpf], :user_id => @receita_medica.paciente_id).to_a.size > 0)
+      if !@receita_medica.nil? && (@receita_medica.belongs_to_patient?(params[:search_cpf]) || Autorizado.where(:cpf => params[:search_cpf], :user_id => @receita_medica.paciente_id).to_a.size > 0)
         redirect_to @receita_medica 
       else       
         flash[:error] = 'Receita nao encontrada'
@@ -112,7 +114,7 @@ class ReceitaMedicasController < ApplicationController
     venda = Venda.new(:farmacia_id => params[:farmacia], :receita_medica_id => params[:receita])
     venda.save
     @receita_medica = ReceitaMedica.find(params[:receita])
-    @receita_medica.status_id = Status.find_by_nome('Finalizado').id if @receita_medica.status_id = Status.find_by_nome('Pendente').id
+    @receita_medica.status_id = Status.find_by_nome('Finalizado').id if @receita_medica.status_id == Status.find_by_nome('Pendente').id
     @receita_medica.save
 
     flash[:msg] = 'Venda da receita registrada com sucesso!'

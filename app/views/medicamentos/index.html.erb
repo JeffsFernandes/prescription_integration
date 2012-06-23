@@ -2,9 +2,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
+      <th>Código</th>
       <th>Nome</th>
-      <th>Ações</th>
+      <th>Princípio ativo?</th>
     </tr>
   </thead>
   <tbody>
@@ -12,13 +12,8 @@
       <tr>
         <td><%= medicamento.id %></td>
         <td><%= link_to medicamento.nome, medicamento_path(medicamento) %></td>
-        <td>
-          <%= link_to 'Editar', edit_medicamento_path(medicamento), :class => 'btn btn-mini' %>
-          <%= link_to 'Remover', medicamento_path(medicamento), :method => :delete, :confirm => 'Tem certeza?', :class => 'btn btn-mini btn-danger' %>
-        </td>
+        <td><%= medicamento.principio_ativo? ? "Sim" : "Não" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Novo medicamento', new_medicamento_path, :class => 'btn' %>
