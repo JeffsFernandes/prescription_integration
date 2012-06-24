@@ -1,3 +1,4 @@
+<br/>
 <h1>Usuário</h1>
 
 <p>
@@ -16,6 +17,7 @@
 </p>
 
 <% if @user.tipo == 1 %>
+<br/>
 <h2>Médicos Autorizados</h2>
 <ul>
   <% for medico_autorizado in @user.medicos_autorizados %>
@@ -25,8 +27,8 @@
     </li>
   <% end %>
 </ul>
-
-<p><%= link_to "Autorizar Médicos", "/medicos" %>
+<br/>
+<p><h2><%= link_to "Autorizar Médicos", "/medicos" %></h2>
 
 <% end %>
 

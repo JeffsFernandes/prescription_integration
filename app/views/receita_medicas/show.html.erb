@@ -27,5 +27,6 @@
 <div class="form-actions">
   <%= link_to 'Voltar', receita_medicas_path, :class => 'btn'  %>
   <%= link_to 'Editar', edit_receita_medica_path(@receita_medica), :class => 'btn' if !params[:editable].nil? || (params[:editable]) %>
+  <br/> <br/>
   <%= button_to 'Vender', {:action => 'vender', :remote => true, :receita => @receita_medica.id, :farmacia => current_user.id } if @receita_medica.pode_ser_vendida? && current_user.tipo == 3 %>
 </div>
