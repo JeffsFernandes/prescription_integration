@@ -13,11 +13,12 @@ PrescriptionIntegration::Application.routes.draw do
 
   post "receita_medicas/vender"
   
-  devise_for :users,  
-              :controllers => {
-                :registrations => 'devise/registrations',
-                :sessions => 'devise/sessions',
-              }
+  devise_for :users
+  # ,  
+  #             :controllers => {
+  #               :registrations => 'devise/registrations',
+  #               :sessions => 'devise/sessions',
+  #             }
   
   resources :users
   resources :historicos

@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<%= form_for current_user, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
     <fieldset>
     <legend>Dados de Login</legend>
       <div class="well fields">
@@ -26,7 +26,7 @@
       </div>
   </fieldset>
 
-  <% if current_user.tipo == 1 %>
+  <% if @user.tipo == 1 %>
     <h3>Cadastrar Pessoas Autorizadas</h3>
      <%= f.fields_for :autorizados do |builder| %>
       <%= render 'autorizado_fields', :f => builder %>
@@ -50,7 +50,7 @@
           </div>
         </div>
         
-        <% if current_user.tipo == 1 %>
+        <% if @user.tipo == 1 %>
           <div class = "tipo_paciente">
             <div class="control-group">
               <%= f.label :cpf, :class => 'control-label' %>
@@ -67,7 +67,7 @@
           </div>
         <% end %>
 
-        <% if current_user.tipo == 2 %>
+        <% if @user.tipo == 2 %>
           <div class = "tipo_medico">
             <div class="control-group">
               <%= f.label :cpf, :class => 'control-label' %>
@@ -90,7 +90,7 @@
           </div>
         <% end %>
 
-        <% if current_user.tipo == 3 %>
+        <% if @user.tipo == 3 %>
           <div class = "tipo_farmacia">
             <div class="control-group">
               <%= f.label :cnpj, :class => 'control-label' %>

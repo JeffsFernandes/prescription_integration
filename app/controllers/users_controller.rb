@@ -58,8 +58,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @users = User.find(params[:id])
-    @users.autorizados.build
+    @user = User.find(params[:id])
+    @user.autorizados.build
   end
 
   # PUT /users/1
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'Usuário foi atualizado.' }
+        format.html { redirect_to user_path(current_user), notice: 'Usuário foi atualizado.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
