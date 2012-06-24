@@ -48,6 +48,7 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/1/edit
   def edit
     @receita_medica = ReceitaMedica.find(params[:id])
+    @medicamentos = Medicamento.all
   end
 
   # POST /receita_medicas
