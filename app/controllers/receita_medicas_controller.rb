@@ -22,6 +22,7 @@ class ReceitaMedicasController < ApplicationController
   # GET /receita_medicas/1.json
   def show
     @receita_medica = ReceitaMedica.find(params[:id])
+    @item_receitas = @receita_medica.item_receitas.all
     respond_to do |format|
       format.html # show.html.erb                                                
       format.json { render json: {

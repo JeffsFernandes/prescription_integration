@@ -31,15 +31,20 @@
               <li><%= link_to 'Entrar', new_user_session_path %></li>
             <% end %>
           </ul>
+          <% if user_signed_in? %>
+            <ul class="nav pull-right">
+              <li><%= link_to current_user.nome, user_path(current_user) %></li>
+            </ul>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  <% end %>
   <div class="container">
     <div class="row">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
       <%= yield %>
     </div>
   </div>
