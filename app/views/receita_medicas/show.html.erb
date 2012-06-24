@@ -4,7 +4,7 @@
 
 <p>
   <b>Medico</b><br>
-  <%= @receita_medica.medico.crm %>
+  <%= @receita_medica.medico.crm %> - <%= @receita_medica.medico.nome %>
 </p>
 
 <p>
@@ -19,11 +19,17 @@
 
 <p>
   <b>Data prescricao</b><br>
-  <%= @receita_medica.created_at %>
+  <%= @receita_medica.created_at.strftime("%d/%m/%Y")  %>
 </p>
 
 <h2> Medicamentos </h2>
-
+  <% for item_receita in @receita_medica.item_receitas %>
+    <p>
+      <strong>Medicamento: </strong><%= item_receita.medicamento.nome %><br>
+      <strong>Quantidade: </strong><%= item_receita.quantidade %><br>
+      <strong>Posologia: </strong><%= item_receita.posologia %>
+    </p>
+  <% end %>
 <div class="form-actions">
   <%= link_to 'Voltar', receita_medicas_path, :class => 'btn'  %>
   <%= link_to 'Editar', edit_receita_medica_path(@receita_medica), :class => 'btn' if !params[:editable].nil? || (params[:editable]) %>

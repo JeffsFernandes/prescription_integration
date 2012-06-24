@@ -1,0 +1,43 @@
+pt-BR:
+  errors:
+    messages:
+      already_confirmed: "já foi confirmado"
+      expired: "expirou, por favor solicite uma nova"
+      not_found: "não encontrado"
+      not_locked: "não foi bloqueado"
+      not_saved:
+        one: "1 erro não permitiu que este %{resource} fosse salvo."
+        other: "%{count} erros não permitiram que este %{model} fosse salvo."
+      blank: "em branco"
+      confirmation: "confirmação de %{attribute}"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "1 erro não permitiu que este %{model} fosse salvo."
+          other: "%{count} erros não permitiram que este %{model} fosse salvo."
+        body: "Houveram problemas com os seguintes campos:"
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+    attributes:
+      created_at: "Criado em"
+      updated_at: "Atualizado em"
+      user:
+        email: "E-mail"
+        role_id: "Categoria de usuário"
+        setor_id: "Setor"
+        name: "Nome"
+        lastname: "Sobrenome"
+        encrrypted_password: "Senha criptografada"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        reset_password_token: "Chave de recuperação de senha"
+        reset_password_sent_at: "Recuperação de senha enviada em"
+        sign_in_count: "Contagem de ingresso"
+        current_sign_in_at: "Logado desde"
+        last_sign_in_at: "Último login em"
+        current_sign_in_ip: "IP do login atual"
+        last_sign_in_ip: "IP do último login"
+        ativo: "Ativo"

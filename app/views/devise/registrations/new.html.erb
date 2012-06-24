@@ -56,7 +56,13 @@
           <div class="control-group">
             <%= f.label :data_nascimento, :class => 'control-label'%>
             <div class="controls">
-              <%= f.date_select :data_nascimento %>
+              <%= f.date_select :data_nascimento, :order => [:year, :month, :day]  %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :sexo, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
             </div>
           </div>
         </div>
@@ -71,7 +77,13 @@
           <div class="control-group">
             <%= f.label :data_nascimento, :class => 'control-label' %>
             <div class="controls">
-              <%= f.date_select :data_nascimento %>
+              <%= f.date_select :data_nascimento, :order => [:year, :month, :day] %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :sexo, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
             </div>
           </div>
         </div>
@@ -89,13 +101,6 @@
           <%= f.label :telefone, :class => 'control-label' %>
           <div class="controls">
             <%= f.text_field :telefone %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= f.label :sexo, :class => 'control-label' %>
-          <div class="controls">
-            <%= f.select :sexo, User::SEXO, {:prompt => ""}, {:class =>'sexo'} %>
           </div>
         </div>
       </div>

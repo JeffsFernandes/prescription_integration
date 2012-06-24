@@ -6,12 +6,52 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-unless Medicamento.find_by_nome('medicamento_1')
-	Medicamento.create({nome: 'medicamento_1'})
+unless Medicamento.find_by_nome('Buscopan')
+	Medicamento.create({nome: 'Buscopan'})
+end
+
+unless Medicamento.find_by_nome('Amoxilina')
+	Medicamento.create({nome: 'Amoxilina'})
+end
+
+unless Medicamento.find_by_nome('Cefalexina')
+	Medicamento.create({nome: 'Cefalexina'})
+end
+
+unless Medicamento.find_by_nome('Viagra')
+	Medicamento.create({nome: 'Viagra'})
+end
+
+unless Medicamento.find_by_nome('Cabioten')
+	Medicamento.create({nome: 'Cabioten'})
+end
+
+unless Medicamento.find_by_nome('Hipernolol')
+	Medicamento.create({nome: 'Hipernolol'})
+end
+
+unless Medicamento.find_by_nome('Renopril')
+	Medicamento.create({nome: 'Renopril'})
+end
+
+unless Medicamento.find_by_nome('Enalatec')
+	Medicamento.create({nome: 'Enalatec'})
+end
+
+unless Medicamento.find_by_nome('Sanpronol')
+	Medicamento.create({nome: 'Sanpronol'})
+end
+
+unless Medicamento.find_by_nome('Pressoflux')
+	Medicamento.create({nome: 'Pressoflux'})
 end
 
 unless User.find_by_nome('Droga Raia')
 	User.create({nome: 'Droga Raia', email: 'droga@raia.com'})
+end
+
+unless User.find_by_nome('Nemo Oliveira')
+	User.create({nome: 'Nemo Oliveira', email: 'nemo@oliveira.com', :password => "123456", :tipo => 2})
 end
 
 unless Historico.find_by_nome('Pendente')
