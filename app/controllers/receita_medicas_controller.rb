@@ -37,7 +37,7 @@ class ReceitaMedicasController < ApplicationController
    raise 'Operacao invalida' unless current_user.tipo == 2
    @receita_medica = ReceitaMedica.new
    @medicamentos = Medicamento.all
-   @users = current_user.pacientes.all
+   @users = User.pacientes
    @historicos = Historico.all
    @receita_medica.item_receitas.build
    respond_to do |format|
